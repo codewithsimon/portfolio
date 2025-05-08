@@ -8,7 +8,7 @@ export default defineConfig({
     mdx()
   ],
   site: 'https://codewithsimon.github.io',
-  base: 'portfolio',
+  base: '/portfolio/',
   markdown: {
     shikiConfig: {
       theme: 'dracula',
