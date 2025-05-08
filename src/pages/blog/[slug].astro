@@ -1,0 +1,145 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import SectionTitle from '../../components/SectionTitle.astro';
+
+export async function getStaticPaths() {
+  const blogPosts = [
+    {
+      title: "The Future of .NET Development in 2024",
+      date: "April 15, 2024",
+      category: ".NET",
+      excerpt: "Exploring the newest features in .NET 8 and what's coming in .NET 9, including performance improvements and new language features that will reshape how we build applications.",
+      imageUrl: "/images/blog-1.jpg",
+      slug: "future-of-dotnet-development-2024",
+      content: `
+        The .NET ecosystem continues to evolve at a rapid pace, with Microsoft introducing groundbreaking features and improvements in .NET 8 and previewing exciting capabilities coming in .NET 9.
+
+        ## Key Features in .NET 7
+
+        - **Native AOT Compilation**: Expanded support for more project types
+        - **Improved Container Support**: Better integration with Docker and Kubernetes
+        - **Enhanced Performance**: Significant improvements in garbage collection and JIT compilation
+
+        ## What's Coming in .NET 9
+
+        - **Project Aperture**: New compilation model for better performance
+        - **Enhanced Cloud Integration**: Native support for major cloud providers
+        - **AI Development Tools**: Built-in support for ML.NET and AI workflows
+
+        ## Impact on Development
+
+        These advancements will significantly impact how we build and deploy applications, making .NET development more efficient and powerful than ever before.
+      `
+    },
+    {
+      title: "Building Cloud-Native Applications with Azure",
+      date: "March 28, 2024",
+      category: "Azure",
+      excerpt: "A deep dive into best practices for developing cloud-native applications using Azure services and modern architectural patterns for scalable, resilient systems.",
+      imageUrl: "/images/blog-2.jpg",
+      slug: "building-cloud-native-applications-azure",
+      content: `
+        Cloud-native development has become the standard for modern applications. Let's explore how Azure services can help build scalable and resilient systems.
+
+        ## Azure Services for Cloud-Native Apps
+
+        - **Azure Kubernetes Service (AKS)**: Managed container orchestration
+        - **Azure Functions**: Serverless compute capabilities
+        - **Azure Cosmos DB**: Globally distributed database service
+
+        ## Best Practices
+
+        1. **Microservices Architecture**
+           - Service isolation
+           - Independent deployment
+           - Scalability per component
+
+        2. **DevOps Integration**
+           - Automated CI/CD pipelines
+           - Infrastructure as Code
+           - Monitoring and logging
+
+        ## Real-World Examples
+
+        We'll look at how companies are implementing these practices to build robust cloud-native applications.
+      `
+    },
+    {
+      title: "Web3 Development: Getting Started with Smart Contracts",
+      date: "February 10, 2024",
+      category: "Web3",
+      excerpt: "An introduction to developing smart contracts for blockchain applications, with practical examples and best practices for developers entering the Web3 space.",
+      imageUrl: "/images/blog-3.jpg",
+      slug: "web3-development-smart-contracts",
+      content: `
+        Smart contracts are the backbone of Web3 applications. This guide will help you understand the fundamentals and best practices.
+
+        ## Understanding Smart Contracts
+
+        - **What are Smart Contracts?**: Self-executing contracts with terms directly written into code
+        - **Blockchain Integration**: How they work on various blockchain platforms
+        - **Use Cases**: Common applications and implementations
+
+        ## Development Tools
+
+        - Solidity for Ethereum
+        - Hardhat development environment
+        - Web3.js and ethers.js libraries
+
+        ## Security Considerations
+
+        - Common vulnerabilities
+        - Audit processes
+        - Testing strategies
+
+        Learn how to build secure and efficient smart contracts for your Web3 applications.
+      `
+    }
+  ];
+
+  return blogPosts.map(post => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+---
+
+<Layout 
+  title={`${post.title} - Stephen Simon's Blog`}
+  description={post.excerpt}
+>
+  <article class="pt-32">
+    <!-- Hero Section -->
+    <div class="relative h-[60vh] overflow-hidden">
+      <div class="absolute inset-0">
+        <div class="absolute inset-0 bg-gradient-to-r from-dark-900/95 to-dark-800/90 z-10"></div>
+        <img 
+          src={post.imageUrl}
+          alt={post.title}
+          class="w-full h-full object-cover"
+        />
+      </div>
+
+      <div class="container relative z-20 mx-auto px-4 lg:px-8 h-full flex items-center">
+        <div class="max-w-3xl">
+          <div class="flex items-center space-x-4 text-gray-300 mb-4">
+            <span>{post.date}</span>
+            <span>•</span>
+            <span>{post.category}</span>
+          </div>
+          <h1 class="text-4xl lg:text-5xl font-bold text-white mb-6">{post.title}</h1>
+          <p class="text-xl text-gray-300">{post.excerpt}</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Content -->
+    <div class="container mx-auto px-4 lg:px-8 py-20">
+      <div class="max-w-3xl mx-auto prose prose-lg dark:prose-invert prose-headings:font-playfair">
+        {post.content}
+      </div>
+    </div>
+  </article>
+</Layout>

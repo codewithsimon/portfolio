@@ -1,0 +1,284 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import EventCard from '../components/EventCard.astro';
+import BlogCard from '../components/BlogCard.astro';
+import ClientLogos from '../components/ClientLogos.astro';
+import TechnicalExpertise from '../components/TechnicalExpertise.astro';
+import TestimonialCard from '../components/TestimonialCard.astro';
+
+// Sample data for events
+const featuredEvents = [
+  {
+    title: "Experts Live Europe 2025",
+    date: "September 23-25, 2025",
+    location: "Budapest, Hungary",
+    imageUrl: "/src/assets/events/Experts Live Europe 2025.jpeg",
+    description: "Keynote speaker discussing leadership in technology and the future of cloud computing at Europe's premier tech conference.",
+    url: "/events/experts-live-europe-2024"
+  },
+  {
+    title: "WOW Summit Hong Kong",
+    date: "March 26-27, 2024",
+    location: "Hong Kong",
+    imageUrl: "/src/assets/events/WOW Summit Hong Kong.jpg",
+    description: "Executive panel on digital transformation and the role of Web3 in enterprise innovation at this global leadership summit.",
+    url: "/events/wow-summit-hong-kong-2024"
+  },
+  {
+    title: "Microsoft AI Tour",
+    date: "Feb 08, 2024",
+    location: "Bengaluru, India",
+    imageUrl: "/src/assets/events/Microsoft-AI-Tour.jpg",
+    description: "Featured speaker on enterprise architecture and strategic technology adoption at Microsoft's flagship conference.",
+    url: "/events/microsoft-build-2024"
+  }
+];
+
+// Latest insights
+const latestPosts = [
+  {
+    title: "Leadership in the Age of Digital Transformation",
+    date: "April 15, 2024",
+    category: "Leadership",
+    excerpt: "Exploring how technology leaders can drive meaningful change and innovation in their organizations.",
+    imageUrl: "/images/blog-1.jpg",
+    slug: "leadership-digital-transformation"
+  },
+  {
+    title: "Building High-Performance Engineering Teams",
+    date: "March 28, 2024",
+    category: "Management",
+    excerpt: "Strategies for cultivating excellence and fostering innovation in technology teams.",
+    imageUrl: "/images/blog-2.jpg",
+    slug: "building-high-performance-teams"
+  },
+  {
+    title: "The Future of Enterprise Technology",
+    date: "February 10, 2024",
+    category: "Technology",
+    excerpt: "Key trends and strategic considerations for enterprise technology adoption in 2024 and beyond.",
+    imageUrl: "/images/blog-3.jpg",
+    slug: "future-enterprise-technology"
+  }
+];
+
+// Featured testimonials
+const featuredTestimonials = [
+  {
+    content: "Stephen's keynote at our Azure Conference was exceptional. His deep technical knowledge combined with engaging presentation style made complex cloud concepts accessible to our entire audience.",
+    author: "Sarah Chen",
+    role: "Chief Technology Officer",
+    company: "TechCorp Global",
+    imageUrl: "https://images.pexels.com/photos/774909/pexels-photo-774909.jpeg",
+    socialPlatform: "linkedin",
+    socialLink: "#"
+  },
+  {
+    content: "Working with Stephen on HackIndia was transformative for our developer community. His vision and leadership helped create one of India's most impactful tech events.",
+    author: "Raj Patel",
+    role: "Developer Relations Lead",
+    company: "Innovation Labs",
+    imageUrl: "https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg",
+    socialPlatform: "twitter",
+    socialLink: "#"
+  }
+];
+
+// HackIndia Stats
+const hackIndiaStats = [
+  { number: "30+", label: "Hackathons Organized" },
+  { number: "30k+", label: "Student Participants" },
+  { number: "250+", label: "Colleges & Universities" },
+  { number: "25+", label: "Cities Covered" }
+];
+
+// Azure Conference Stats
+const azureConfStats = [
+  { number: "250k+", label: "Attendees" },
+  { number: "130+", label: "Speakers" },
+  { number: "100+", label: "Sessions" },
+  { number: "30+", label: "Countries" }
+];
+---
+
+<Layout title="Stephen Simon - Technology Leader | International Speaker | Regional Director">
+  <!-- Hero Section -->
+  <section class="relative min-h-screen flex items-center justify-center bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8 py-20">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div class="text-left" data-aos="fade-right">
+          <h1 class="text-5xl lg:text-7xl font-bold mb-8 leading-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">
+            Stephen Simon
+          </h1>
+          <p class="text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed mt-4">
+            Regional Director at C# Corner | Technology Leader | International Speaker
+          </p>
+          <div class="flex flex-wrap gap-4">
+            <a href="/about" class="py-3 px-8 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors text-lg">
+              About Me
+            </a>
+          </div>
+        </div>
+        <div class="relative" data-aos="fade-left">
+          <img 
+            src="/src/assets/homepage/3.jpg" 
+            alt="Stephen Simon" 
+            class="w-full h-[600px] object-cover rounded-2xl shadow-2xl"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Client Logos Section -->
+  <ClientLogos />
+
+  <!-- HackIndia Section -->
+  <section class="py-32 bg-gradient-to-b from-dark-900 to-dark-800">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div class="relative" data-aos="fade-right">
+          <img 
+            src="/src/assets/homepage/2.jpg" 
+            alt="HackIndia Event" 
+            class="w-full rounded-2xl shadow-2xl"
+          />
+          <div class="absolute inset-0 bg-gradient-to-r from-dark-900/50 to-transparent rounded-2xl"></div>
+        </div>
+        
+        <div data-aos="fade-left">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-white">
+            Organiser of HackIndia
+          </h2>
+          <p class="text-xl text-gray-300 mb-8">
+            India's largest Web3 and AI Hackathon series, empowering the next generation of innovators across the nation.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-6">
+            {hackIndiaStats.map(stat => (
+              <div class="bg-dark-800/50 backdrop-blur-sm p-6 rounded-xl">
+                <div class="text-3xl font-bold text-primary-400 mb-2">{stat.number}</div>
+                <div class="text-gray-300">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Expertise Section -->
+  <TechnicalExpertise />
+
+  <!-- Azure Conference Section -->
+  <section class="py-32 bg-gradient-to-b from-dark-900 to-dark-800">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+        <div data-aos="fade-right">
+          <h2 class="text-4xl lg:text-5xl font-bold mb-6 text-white">
+            World's Largest Azure Conference
+          </h2>
+          <p class="text-xl text-gray-300 mb-8">
+            Organizing and leading the largest Azure-focused technology conference, bringing together global experts and innovators.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-6">
+            {azureConfStats.map(stat => (
+              <div class="bg-primary-900/30 backdrop-blur-sm p-6 rounded-xl">
+                <div class="text-3xl font-bold text-primary-400 mb-2">{stat.number}</div>
+                <div class="text-gray-300">{stat.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div class="relative" data-aos="fade-left">
+          <img 
+            src="/src/assets/homepage/Stephen SIMON Speaking at Azure Conference.png" 
+            alt="Stephen SIMON Speaking at World's Largest Azure Conference on Microsoft Learn" 
+            class="w-full rounded-2xl shadow-2xl"
+          />
+          <div class="absolute inset-0 bg-gradient-to-l from-dark-900/50 to-transparent rounded-2xl"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Speaking -->
+  <section class="py-32 bg-gradient-to-b from-dark-800 to-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Featured Speaking Engagements" 
+        subtitle="Inspiring audiences worldwide with insights on technology, leadership, and innovation"
+        alignment="center"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        {featuredEvents.map(event => (
+          <div data-aos="fade-up" data-aos-delay={featuredEvents.indexOf(event) * 100}>
+            <EventCard {...event} />
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12" data-aos="fade-up">
+        <a href="/events" class="inline-block py-3 px-8 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors text-lg">
+          View All Speaking Engagements
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials Section -->
+  <section class="py-32 bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="What People Say" 
+        subtitle="Testimonials from industry leaders and community members"
+        alignment="center"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+        {featuredTestimonials.map(testimonial => (
+          <div data-aos="fade-up" data-aos-delay={featuredTestimonials.indexOf(testimonial) * 100}>
+            <TestimonialCard {...testimonial} />
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12" data-aos="fade-up">
+        <a href="/testimonials" class="inline-block py-3 px-8 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors text-lg">
+          View All Testimonials
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Latest Insights -->
+  <section class="py-32 bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Latest Insights" 
+        subtitle="Thoughts on technology leadership, innovation, and digital transformation"
+        alignment="center"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-16">
+        {latestPosts.map(post => (
+          <div data-aos="fade-up" data-aos-delay={latestPosts.indexOf(post) * 100}>
+            <BlogCard {...post} />
+          </div>
+        ))}
+      </div>
+      
+      <div class="text-center mt-12" data-aos="fade-up">
+        <a href="/blog" class="inline-block py-3 px-8 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors text-lg">
+          Read All Articles
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>

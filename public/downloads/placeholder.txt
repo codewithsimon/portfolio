@@ -1,0 +1,11 @@
+This is a placeholder file to indicate that the /public/downloads/ directory would contain the following downloadable files:
+
+- stephen-simon-headshot-1.jpg
+- stephen-simon-headshot-2.jpg
+- stephen-simon-speaking-1.jpg
+- stephen-simon-logo-dark.png
+- stephen-simon-logo-light.png
+- stephen-simon-logo.svg
+- stephen-simon-short-bio.pdf
+- stephen-simon-full-bio.pdf
+- stephen-simon-speaking-topics.pdf

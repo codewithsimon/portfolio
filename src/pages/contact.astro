@@ -1,0 +1,171 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+// Contact info
+const contactInfo = [
+  {
+    icon: "mail",
+    title: "Email",
+    content: "a.stephensimon@outlook.com",
+    link: "mailto:a.stephensimon@outlook.com"
+  },
+  {
+    icon: "linkedin",
+    title: "LinkedIn",
+    content: "Connect with me on LinkedIn",
+    link: "https://www.linkedin.com/in/codewithsimon/"
+  },
+  {
+    icon: "x",
+    title: "X (Twitter)",
+    content: "Follow me @codewithsimon",
+    link: "https://x.com/codewithsimon"
+  },
+  {
+    icon: "github",
+    title: "GitHub",
+    content: "Check out my code",
+    link: "https://github.com/codewithsimon"
+  }
+];
+
+// FAQ items
+const faqItems = [
+  {
+    question: "How can I invite you to speak at my event?",
+    answer: "The best way is to reach out through email with details about your event, including dates, location, audience, and the topic you'd like me to speak about. Please try to provide at least 2-3 months' notice for in-person events to accommodate scheduling."
+  },
+  {
+    question: "Do you speak at virtual events and webinars?",
+    answer: "Yes, I regularly participate in virtual events, webinars, and online conferences. These can often be scheduled with less lead time than in-person events, but I still appreciate advance notice when possible."
+  },
+  {
+    question: "What topics do you speak about?",
+    answer: "My primary speaking topics include .NET development, Azure cloud services, Web3 technologies, building developer communities, and technology leadership. I can tailor presentations to your specific audience and event needs."
+  }
+];
+---
+
+<Layout 
+  title="Contact - Stephen Simon"
+  description="Get in touch with Stephen Simon for speaking engagements, collaborations, or other inquiries. Connect directly through email or social media."
+>
+  <Hero 
+    title="Contact Me" 
+    subtitle="Let's connect for speaking engagements, collaborations, or just to chat"
+    backgroundImage="/images/contact-hero.jpg"
+  />
+
+  <!-- Contact Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="max-w-3xl mx-auto">
+        <SectionTitle 
+          title="Get in Touch" 
+          subtitle="I'm always interested in new opportunities and connections"
+          alignment="center"
+        />
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
+          {contactInfo.map(item => (
+            <div class="flex items-start bg-white/5 p-6 rounded-xl hover:bg-white/10 transition-colors">
+              <div class="bg-primary-100 dark:bg-primary-900 p-3 rounded-lg text-primary-600 dark:text-primary-400 mr-4">
+                {item.icon === "mail" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                )}
+                {item.icon === "linkedin" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                  </svg>
+                )}
+                {item.icon === "x" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                  </svg>
+                )}
+                {item.icon === "github" && (
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24">
+                    <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+                  </svg>
+                )}
+              </div>
+              <div>
+                <h3 class="text-lg font-semibold text-dark-800 dark:text-white mb-1">{item.title}</h3>
+                <a href={item.link} class="text-primary-600 dark:text-primary-400 hover:underline">{item.content}</a>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <!-- Location Map Placeholder -->
+        <div class="mt-12 h-64 bg-gray-200 dark:bg-dark-700 rounded-xl relative overflow-hidden" data-aos="fade-up">
+          <div class="absolute inset-0 bg-center bg-cover opacity-60" style="background-image: url('/images/map-bg.jpg')"></div>
+          <div class="absolute inset-0 flex items-center justify-center">
+            <div class="text-center p-6 bg-white/80 dark:bg-dark-800/80 backdrop-blur-sm rounded-xl">
+              <h3 class="text-lg font-semibold text-dark-800 dark:text-white mb-2">Based in Delhi, India</h3>
+              <p class="text-dark-600 dark:text-gray-300">Available for global speaking engagements</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ Section -->
+  <section class="py-20 bg-gray-50 dark:bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Frequently Asked Questions" 
+        subtitle="Common questions about speaking engagements and collaborations"
+        alignment="center"
+      />
+      
+      <div class="max-w-3xl mx-auto mt-12" data-aos="fade-up">
+        {faqItems.map((item, index) => (
+          <div class={`mb-6 ${index < faqItems.length - 1 ? 'border-b border-gray-200 dark:border-dark-700 pb-6' : ''}`}>
+            <h3 class="text-xl font-semibold text-dark-800 dark:text-white mb-3">{item.question}</h3>
+            <p class="text-dark-600 dark:text-gray-300">{item.answer}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA for Speaking Engagements -->
+  <section class="py-20 bg-primary-600 text-white">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Looking for a Speaker for Your Next Event?
+          </h2>
+          
+          <p class="text-xl text-primary-100 mb-8">
+            I'm available for conferences, webinars, workshops, and panel discussions on cloud computing, .NET development, Web3 technologies, and community building.
+          </p>
+          
+          <div class="flex flex-wrap gap-4">
+            <a href="/events" class="inline-block py-3 px-6 bg-white text-primary-600 hover:bg-gray-100 font-medium rounded-lg transition-colors">
+              View Past Events
+            </a>
+            <a href="/media-kit" class="inline-block py-3 px-6 bg-primary-700 hover:bg-primary-800 text-white font-medium rounded-lg transition-colors">
+              Download Media Kit
+            </a>
+          </div>
+        </div>
+        
+        <div class="relative h-80 md:h-full" data-aos="fade-left">
+          <img 
+            src="/images/speaking-stage.jpg" 
+            alt="Stephen Simon speaking on stage" 
+            class="w-full h-full object-cover rounded-xl shadow-xl"
+          />
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

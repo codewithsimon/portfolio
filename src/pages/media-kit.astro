@@ -1,0 +1,221 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import MediaItem from '../components/MediaItem.astro';
+
+// Sample data for headshots
+const headshots = [
+  {
+    title: "Professional Headshot 1",
+    description: "Formal headshot for conference profiles and speaker announcements",
+    imageUrl: "/images/headshot-1.jpg",
+    downloadUrl: "/downloads/stephen-simon-headshot-1.jpg",
+    format: "JPG",
+    fileSize: "2.4 MB"
+  },
+  {
+    title: "Professional Headshot 2",
+    description: "Casual professional headshot suitable for blog posts and interviews",
+    imageUrl: "/images/headshot-2.jpg",
+    downloadUrl: "/downloads/stephen-simon-headshot-2.jpg",
+    format: "JPG",
+    fileSize: "2.1 MB"
+  },
+  {
+    title: "Speaking Photo",
+    description: "Photo of me presenting at a technical conference",
+    imageUrl: "/images/speaking-1.jpg",
+    downloadUrl: "/downloads/stephen-simon-speaking-1.jpg",
+    format: "JPG",
+    fileSize: "3.2 MB"
+  }
+];
+
+// Sample data for logos
+const logos = [
+  {
+    title: "Stephen Simon Logo - Dark",
+    description: "Dark version of my personal brand logo",
+    imageUrl: "/images/logo-dark.jpg",
+    downloadUrl: "/downloads/stephen-simon-logo-dark.png",
+    format: "PNG",
+    fileSize: "480 KB"
+  },
+  {
+    title: "Stephen Simon Logo - Light",
+    description: "Light version of my personal brand logo for dark backgrounds",
+    imageUrl: "/images/logo-light.jpg",
+    downloadUrl: "/downloads/stephen-simon-logo-light.png",
+    format: "PNG",
+    fileSize: "480 KB"
+  },
+  {
+    title: "Stephen Simon Logo - Vector",
+    description: "Vector version of my personal brand logo for high-resolution printing",
+    imageUrl: "/images/logo-vector.jpg",
+    downloadUrl: "/downloads/stephen-simon-logo.svg",
+    format: "SVG",
+    fileSize: "120 KB"
+  }
+];
+
+// Sample data for presentation materials
+const presentations = [
+  {
+    title: "Speaker Biography - Short",
+    description: "100-word biography for conference programs and speaker introductions",
+    imageUrl: "/images/bio-short.jpg",
+    downloadUrl: "/downloads/stephen-simon-short-bio.pdf",
+    format: "PDF",
+    fileSize: "42 KB"
+  },
+  {
+    title: "Speaker Biography - Full",
+    description: "Complete professional biography with detailed experience and background",
+    imageUrl: "/images/bio-full.jpg",
+    downloadUrl: "/downloads/stephen-simon-full-bio.pdf",
+    format: "PDF",
+    fileSize: "120 KB"
+  },
+  {
+    title: "Speaking Topics & Abstracts",
+    description: "Overview of my speaking topics with detailed abstracts for event organizers",
+    imageUrl: "/images/topics.jpg",
+    downloadUrl: "/downloads/stephen-simon-speaking-topics.pdf",
+    format: "PDF",
+    fileSize: "250 KB"
+  }
+];
+---
+
+<Layout 
+  title="Media Kit - Stephen Simon"
+  description="Download official photos, logos, and speaking materials for Stephen Simon, Regional Director at C# Corner and international speaker."
+>
+  <Hero 
+    title="Media Kit" 
+    subtitle="Official photos, logos, and materials for event organizers and media"
+    backgroundImage="/images/media-kit-hero.jpg"
+  />
+
+  <!-- Introduction Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="max-w-3xl mx-auto text-center" data-aos="fade-up">
+        <p class="text-xl text-dark-600 dark:text-gray-300 mb-8">
+          Welcome to my media kit! Here you'll find a collection of official photos, logos, and materials for use by event organizers, media outlets, and partners. Please feel free to download and use these assets when featuring me as a speaker or guest.
+        </p>
+        
+        <div class="flex flex-wrap justify-center gap-4">
+          <a href="#headshots" class="py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors">
+            Headshots
+          </a>
+          <a href="#logos" class="py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors">
+            Logos
+          </a>
+          <a href="#presentations" class="py-2 px-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors">
+            Presentations
+          </a>
+          <a href="/contact" class="py-2 px-4 bg-gray-200 dark:bg-dark-700 hover:bg-gray-300 dark:hover:bg-dark-600 text-dark-700 dark:text-gray-300 font-medium rounded-lg transition-colors">
+            Request Custom Materials
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Headshots Section -->
+  <section id="headshots" class="py-20 bg-gray-50 dark:bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Official Headshots" 
+        subtitle="Professional photos for use in event promotions and media coverage"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        {headshots.map((item, index) => (
+          <MediaItem {...item} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Logos Section -->
+  <section id="logos" class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Logos & Branding" 
+        subtitle="Official logos and branding materials in various formats"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        {logos.map((item, index) => (
+          <MediaItem {...item} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Presentation Materials Section -->
+  <section id="presentations" class="py-20 bg-gray-50 dark:bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Presentation Materials" 
+        subtitle="Biographies, abstracts, and other supporting materials for events"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        {presentations.map((item, index) => (
+          <MediaItem {...item} />
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Usage Guidelines -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Usage Guidelines" 
+        subtitle="Instructions for using these materials appropriately"
+        alignment="center"
+      />
+      
+      <div class="max-w-3xl mx-auto bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg mt-12" data-aos="fade-up">
+        <div class="space-y-6 text-dark-600 dark:text-gray-300">
+          <p>
+            All materials provided in this media kit are available for use by event organizers, media publications, and partners under the following guidelines:
+          </p>
+          
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Photos and logos may be used for promotional materials related to events where I am speaking or participating.</li>
+            <li>Please do not crop, distort, or alter the photos substantially in a way that changes my appearance.</li>
+            <li>When using my biography, please use the text as provided without significant alterations.</li>
+            <li>Please maintain appropriate resolution and quality when reproducing these images.</li>
+            <li>Attribution is appreciated but not required for materials in this media kit.</li>
+          </ul>
+          
+          <p>
+            If you need additional materials or have specific requirements, please don't hesitate to <a href="/contact" class="text-primary-600 dark:text-primary-400 hover:underline">contact me</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-primary-600 text-white">
+    <div class="container mx-auto px-4 lg:px-8 text-center" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 max-w-3xl mx-auto">
+        Need Something Custom?
+      </h2>
+      <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+        If you need customized materials or have specific requests for your event, I'm happy to help.
+      </p>
+      <a href="/contact" class="inline-block py-3 px-8 bg-white text-primary-600 hover:bg-gray-100 font-medium rounded-lg transition-colors text-lg">
+        Contact Me
+      </a>
+    </div>
+  </section>
+</Layout>

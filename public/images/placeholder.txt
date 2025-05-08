@@ -1,0 +1,18 @@
+This is a placeholder file to indicate that the /public/images/ directory would contain the following image files:
+
+- hero-bg.jpg (Homepage hero background)
+- about-hero.jpg (About page hero background)
+- events-hero.jpg (Events page hero background)
+- blog-hero.jpg (Blog page hero background)
+- media-kit-hero.jpg (Media kit page hero background)
+- contact-hero.jpg (Contact page hero background)
+- profile.jpg (Homepage profile image)
+- profile-extended.jpg (About page profile image)
+- event-1.jpg through event-9.jpg (Event images)
+- blog-1.jpg through blog-9.jpg (Blog post images)
+- headshot-1.jpg, headshot-2.jpg, speaking-1.jpg (Media kit headshots)
+- logo-dark.jpg, logo-light.jpg, logo-vector.jpg (Media kit logos)
+- bio-short.jpg, bio-full.jpg, topics.jpg (Media kit presentation materials)
+- map-bg.jpg (Map background for contact page)
+- speaking-stage.jpg (Image of speaking on stage)
+- cert-azure-architect.jpg, cert-devops.jpg, cert-blockchain.jpg (Certification images)

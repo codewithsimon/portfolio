@@ -1,0 +1,280 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+// Azure and Cloud Computing Videos
+const azureVideos = [
+  {
+    title: "Building Scalable Applications with Azure",
+    description: "Learn how to architect and deploy highly scalable applications using Azure services.",
+    thumbnail: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg",
+    url: "https://youtube.com/watch?v=example1"
+  },
+  {
+    title: "Azure DevOps Best Practices",
+    description: "Essential DevOps practices for modern cloud applications using Azure DevOps.",
+    thumbnail: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
+    url: "https://youtube.com/watch?v=example2"
+  },
+  {
+    title: "Serverless with Azure Functions",
+    description: "Deep dive into serverless computing using Azure Functions.",
+    thumbnail: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
+    url: "https://youtube.com/watch?v=example3"
+  }
+];
+
+// .NET Development Videos
+const dotnetVideos = [
+  {
+    title: "Modern .NET Development Patterns",
+    description: "Explore modern development patterns and best practices in .NET.",
+    thumbnail: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
+    url: "https://youtube.com/watch?v=example4"
+  },
+  {
+    title: "Building APIs with .NET Core",
+    description: "Learn how to create robust and scalable APIs using .NET Core.",
+    thumbnail: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg",
+    url: "https://youtube.com/watch?v=example5"
+  },
+  {
+    title: "Microservices in .NET",
+    description: "Understanding microservices architecture implementation in .NET.",
+    thumbnail: "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg",
+    url: "https://youtube.com/watch?v=example6"
+  }
+];
+
+// Web3 and Blockchain Videos
+const web3Videos = [
+  {
+    title: "Introduction to Web3 Development",
+    description: "Getting started with Web3 development and blockchain technologies.",
+    thumbnail: "https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg",
+    url: "https://youtube.com/watch?v=example7"
+  },
+  {
+    title: "Smart Contract Development",
+    description: "Learn how to write and deploy smart contracts on blockchain platforms.",
+    thumbnail: "https://images.pexels.com/photos/1181533/pexels-photo-1181533.jpeg",
+    url: "https://youtube.com/watch?v=example8"
+  },
+  {
+    title: "DeFi Application Architecture",
+    description: "Understanding the architecture of decentralized finance applications.",
+    thumbnail: "https://images.pexels.com/photos/1181588/pexels-photo-1181588.jpeg",
+    url: "https://youtube.com/watch?v=example9"
+  }
+];
+
+// Community and Leadership Videos
+const communityVideos = [
+  {
+    title: "Building Developer Communities",
+    description: "Strategies for building and growing successful developer communities.",
+    thumbnail: "https://images.pexels.com/photos/1181622/pexels-photo-1181622.jpeg",
+    url: "https://youtube.com/watch?v=example10"
+  },
+  {
+    title: "Technology Leadership",
+    description: "Insights on technology leadership and team management.",
+    thumbnail: "https://images.pexels.com/photos/1181677/pexels-photo-1181677.jpeg",
+    url: "https://youtube.com/watch?v=example11"
+  },
+  {
+    title: "Organizing Tech Events",
+    description: "How to organize successful technology events and conferences.",
+    thumbnail: "https://images.pexels.com/photos/1181715/pexels-photo-1181715.jpeg",
+    url: "https://youtube.com/watch?v=example12"
+  }
+];
+---
+
+<Layout 
+  title="Videos - Stephen Simon"
+  description="Educational videos and talks on cloud computing, .NET development, Web3, and technology leadership."
+>
+  <Hero 
+    title="Video Content" 
+    subtitle="Technical talks, tutorials, and insights on modern technology"
+    backgroundImage="https://images.pexels.com/photos/2833037/pexels-photo-2833037.jpeg"
+  />
+
+  <!-- Video Categories Navigation -->
+  <div class="sticky top-24 z-30 bg-dark-900/95 backdrop-blur-sm py-4 border-b border-dark-700">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
+        <a href="#azure" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">Azure & Cloud</a>
+        <a href="#dotnet" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">.NET Development</a>
+        <a href="#web3" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">Web3 & Blockchain</a>
+        <a href="#community" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">Community & Leadership</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Azure and Cloud Computing Section -->
+  <section id="azure" class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Azure and Cloud Computing" 
+        subtitle="Deep dives into cloud architecture and Azure services"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        {azureVideos.map((video, index) => (
+          <div 
+            class="bg-dark-800 rounded-xl overflow-hidden shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
+              <div class="relative aspect-video">
+                <img 
+                  src={video.thumbnail} 
+                  alt={video.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-white mb-3">{video.title}</h3>
+                <p class="text-gray-400 text-sm line-clamp-2">{video.description}</p>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- .NET Development Section -->
+  <section id="dotnet" class="py-20 bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title=".NET Development" 
+        subtitle="Tutorials and best practices for .NET developers"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        {dotnetVideos.map((video, index) => (
+          <div 
+            class="bg-dark-800 rounded-xl overflow-hidden shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
+              <div class="relative aspect-video">
+                <img 
+                  src={video.thumbnail} 
+                  alt={video.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-white mb-3">{video.title}</h3>
+                <p class="text-gray-400 text-sm line-clamp-2">{video.description}</p>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Web3 and Blockchain Section -->
+  <section id="web3" class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Web3 and Blockchain" 
+        subtitle="Exploring decentralized technologies and blockchain development"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        {web3Videos.map((video, index) => (
+          <div 
+            class="bg-dark-800 rounded-xl overflow-hidden shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
+              <div class="relative aspect-video">
+                <img 
+                  src={video.thumbnail} 
+                  alt={video.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-white mb-3">{video.title}</h3>
+                <p class="text-gray-400 text-sm line-clamp-2">{video.description}</p>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Community and Leadership Section -->
+  <section id="community" class="py-20 bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Community and Leadership" 
+        subtitle="Insights on building communities and technology leadership"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        {communityVideos.map((video, index) => (
+          <div 
+            class="bg-dark-800 rounded-xl overflow-hidden shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
+              <div class="relative aspect-video">
+                <img 
+                  src={video.thumbnail} 
+                  alt={video.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-white mb-3">{video.title}</h3>
+                <p class="text-gray-400 text-sm line-clamp-2">{video.description}</p>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-primary-600">
+    <div class="container mx-auto px-4 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Subscribe to My Channel</h2>
+      <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+        Stay updated with the latest videos on cloud computing, development, and technology leadership.
+      </p>
+      <a 
+        href="https://youtube.com/@StephenSimon"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-block py-3 px-8 bg-white text-primary-600 hover:bg-gray-100 font-medium rounded-lg transition-colors"
+      >
+        Visit YouTube Channel
+      </a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+</style>

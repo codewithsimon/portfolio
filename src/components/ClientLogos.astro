@@ -1,0 +1,90 @@
+---
+// Sample client logos - Replace with actual client logos
+const clients = [
+  {
+    name: "Microsoft",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/200px-Microsoft_logo.svg.png"
+  },
+  {
+    name: "Amazon",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/200px-Amazon_logo.svg.png"
+  },
+  {
+    name: "Google",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/200px-Google_2015_logo.svg.png"
+  },
+  {
+    name: "IBM",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/51/IBM_logo.svg/200px-IBM_logo.svg.png"
+  },
+  {
+    name: "Oracle",
+    logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/50/Oracle_logo.svg/200px-Oracle_logo.svg.png"
+  }
+];
+---
+
+<div class="py-20 bg-dark-800">
+  <div class="container mx-auto px-4 lg:px-8">
+    <div class="text-center mb-12" data-aos="fade-up">
+      <h2 class="text-3xl font-bold text-white mb-4">Trusted By Industry Leaders</h2>
+      <p class="text-gray-300">Partnering with global technology companies to deliver innovative solutions</p>
+    </div>
+    
+    <div class="swiper client-logos" data-aos="fade-up">
+      <div class="swiper-wrapper">
+        {clients.map(client => (
+          <div class="swiper-slide flex items-center justify-center">
+            <img 
+              src={client.logo} 
+              alt={client.name}
+              class="h-12 object-contain filter brightness-0 invert opacity-50 hover:opacity-75 transition-opacity"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import Swiper from 'swiper';
+  import { Navigation, Autoplay } from 'swiper/modules';
+  import 'swiper/css';
+
+  function initSwiper() {
+    const swiper = new Swiper('.client-logos', {
+      modules: [Navigation, Autoplay],
+      slidesPerView: 5,
+      spaceBetween: 30,
+      loop: true,
+      autoplay: {
+        delay: 3000,
+        disableOnInteraction: false,
+      },
+      breakpoints: {
+        320: {
+          slidesPerView: 2,
+        },
+        480: {
+          slidesPerView: 3,
+        },
+        640: {
+          slidesPerView: 4,
+        },
+        768: {
+          slidesPerView: 5,
+        },
+        1024: {
+          slidesPerView: 6,
+        },
+      },
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initSwiper);
+
+  // Initialize on view transitions
+  document.addEventListener('astro:after-swap', initSwiper);
+</script>

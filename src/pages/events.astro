@@ -1,0 +1,459 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+import EventCard from '../components/EventCard.astro';
+
+// Sample data for upcoming events
+const upcomingEvents = [
+  {
+    title: "Experts Live Europe 2024",
+    date: "June 15, 2024",
+    location: "Amsterdam, Netherlands",
+    imageUrl: "/images/event-1.jpg",
+    description: "Presenting on the latest Azure developments and cloud-native applications at Europe's premier Microsoft technology conference.",
+    url: "/events/experts-live-europe-2024"
+  },
+  {
+    title: "Microsoft Build",
+    date: "May 10, 2024",
+    location: "Seattle, USA",
+    imageUrl: "/images/event-3.jpg",
+    description: "Presenting sessions on .NET development and Microsoft's developer ecosystem at this flagship annual conference.",
+    url: "/events/microsoft-build-2024"
+  },
+  {
+    title: "DevConnect India 2024",
+    date: "July 22, 2024",
+    location: "Bangalore, India",
+    imageUrl: "/images/event-4.jpg",
+    description: "Keynote speaker discussing the evolving landscape of developer communities and technology ecosystem in India.",
+    url: "/events/devconnect-india-2024"
+  }
+];
+
+// Sample data for past events
+const pastEvents = [
+  {
+    title: "WOW Summit Hong Kong",
+    date: "March 20, 2024",
+    location: "Hong Kong",
+    imageUrl: "/images/event-2.jpg",
+    description: "Speaking about Web3 technologies and the future of decentralized applications at this global blockchain and AI innovation summit.",
+    url: "/events/wow-summit-hong-kong-2024"
+  },
+  {
+    title: "Ignite Mumbai",
+    date: "February 5, 2024",
+    location: "Mumbai, India",
+    imageUrl: "/images/event-5.jpg",
+    description: "Conference focusing on Microsoft technologies and cloud innovations, with hands-on workshops and technical deep dives.",
+    url: "/events/ignite-mumbai-2024"
+  },
+  {
+    title: "DevFest Delhi 2023",
+    date: "December 12, 2023",
+    location: "Delhi, India",
+    imageUrl: "/images/event-6.jpg",
+    description: "Community-led developer event featuring technical talks, workshops, and networking opportunities for technology professionals.",
+    url: "/events/devfest-delhi-2023"
+  },
+  {
+    title: "C# Corner Annual Conference 2023",
+    date: "October 25, 2023",
+    location: "Noida, India",
+    imageUrl: "/images/event-7.jpg",
+    description: "The flagship annual event for C# Corner community members, featuring technical sessions, panels, and networking opportunities.",
+    url: "/events/csharp-corner-conference-2023"
+  },
+  {
+    title: "Azure Community Day Singapore",
+    date: "September 8, 2023",
+    location: "Singapore",
+    imageUrl: "/images/event-8.jpg",
+    description: "A community-driven conference focused on Azure cloud services, DevOps practices, and cloud-native application development.",
+    url: "/events/azure-community-day-singapore-2023"
+  },
+  {
+    title: "Web3 Innovation Summit 2023",
+    date: "July 15, 2023",
+    location: "Dubai, UAE",
+    imageUrl: "/images/event-9.jpg",
+    description: "International conference focusing on blockchain technology, cryptocurrencies, and decentralized applications.",
+    url: "/events/web3-innovation-summit-2023"
+  }
+];
+
+// Additional past events for table
+const morePastEvents = [
+  {
+    date: "June 5, 2023",
+    title: "Cloud Summit Tokyo",
+    location: "Tokyo, Japan",
+    topic: "Azure Architecture Patterns",
+    type: "Conference",
+    url: "https://cloudsummit.tokyo/2023"
+  },
+  {
+    date: "May 12, 2023",
+    title: "DevOps Days Melbourne",
+    location: "Melbourne, Australia",
+    topic: "Modern DevOps Practices",
+    type: "Conference",
+    url: "https://devopsdays.org/melbourne/2023"
+  },
+  {
+    date: "April 8, 2023",
+    title: "Tech Leaders Forum",
+    location: "London, UK",
+    topic: "Digital Transformation",
+    type: "Panel",
+    url: "https://techleadersforum.uk/2023"
+  },
+  {
+    date: "March 15, 2023",
+    title: "AI Summit",
+    location: "San Francisco, USA",
+    topic: "Enterprise AI Integration",
+    type: "Keynote",
+    url: "https://aisummit.com/sanfrancisco/2023"
+  },
+  {
+    date: "February 22, 2023",
+    title: "Developer Week",
+    location: "New York, USA",
+    topic: ".NET Performance Optimization",
+    type: "Workshop",
+    url: "https://developerweek.com/nyc/2023"
+  },
+  {
+    date: "January 18, 2023",
+    title: "Cloud Native Con",
+    location: "Berlin, Germany",
+    topic: "Kubernetes Best Practices",
+    type: "Session",
+    url: "https://cloudnativecon.eu/2023"
+  },
+  {
+    date: "December 5, 2022",
+    title: "Web Summit",
+    location: "Lisbon, Portugal",
+    topic: "Future of Web Development",
+    type: "Keynote",
+    url: "https://websummit.com/2022"
+  },
+  {
+    date: "November 15, 2022",
+    title: "Tech Conference Asia",
+    location: "Seoul, South Korea",
+    topic: "Cloud Security",
+    type: "Session",
+    url: "https://techconfasia.com/2022"
+  },
+  {
+    date: "October 8, 2022",
+    title: "Developer Conference",
+    location: "Amsterdam, Netherlands",
+    topic: "Microservices Architecture",
+    type: "Workshop",
+    url: "https://devconf.nl/2022"
+  },
+  {
+    date: "September 20, 2022",
+    title: "Blockchain Summit",
+    location: "Miami, USA",
+    topic: "Enterprise Blockchain",
+    type: "Panel",
+    url: "https://blockchainsummit.com/miami/2022"
+  }
+];
+
+// Pagination settings
+const itemsPerPage = 5;
+const totalPages = Math.ceil(morePastEvents.length / itemsPerPage);
+---
+
+<Layout 
+  title="Speaking Events - Stephen Simon"
+  description="Past and upcoming speaking engagements of Stephen Simon, including conferences, workshops, and community events around the world."
+>
+  <Hero 
+    title="Speaking Events" 
+    subtitle="Past and upcoming conferences, workshops, and community events"
+    backgroundImage="/images/events-hero.jpg"
+  />
+
+  <!-- Upcoming Events Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Upcoming Events" 
+        subtitle="Where you can catch me speaking next"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        {upcomingEvents.map((event, index) => (
+          <div data-aos="fade-up" data-aos-delay={index * 100}>
+            <EventCard {...event} />
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Speaking Topics -->
+  <section class="py-20 bg-gray-50 dark:bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Speaking Topics" 
+        subtitle="Areas of expertise that I frequently present on"
+        alignment="center"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="0">
+          <div class="text-primary-600 dark:text-primary-400 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-dark-800 dark:text-white mb-3">Cloud & Azure</h3>
+          <ul class="space-y-2 text-dark-600 dark:text-gray-300">
+            <li>- Azure Architecture Best Practices</li>
+            <li>- Serverless Computing with Azure Functions</li>
+            <li>- Microservices on Azure</li>
+            <li>- Cloud-Native Application Development</li>
+            <li>- DevOps in the Cloud</li>
+          </ul>
+        </div>
+        
+        <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+          <div class="text-primary-600 dark:text-primary-400 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-dark-800 dark:text-white mb-3">.NET & C#</h3>
+          <ul class="space-y-2 text-dark-600 dark:text-gray-300">
+            <li>- Modern .NET Development</li>
+            <li>- ASP.NET Core Best Practices</li>
+            <li>- Performance Optimization in .NET</li>
+            <li>- Building RESTful APIs with .NET</li>
+            <li>- .NET MAUI for Cross-Platform Development</li>
+          </ul>
+        </div>
+        
+        <div class="bg-white dark:bg-dark-700 p-8 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="200">
+          <div class="text-primary-600 dark:text-primary-400 mb-4">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+          </div>
+          <h3 class="text-xl font-semibold text-dark-800 dark:text-white mb-3">Web3 & Blockchain</h3>
+          <ul class="space-y-2 text-dark-600 dark:text-gray-300">
+            <li>- Introduction to Blockchain Technology</li>
+            <li>- Smart Contract Development</li>
+            <li>- Decentralized Applications (dApps)</li>
+            <li>- Web3 Integration Strategies</li>
+            <li>- NFTs and Digital Assets</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Past Events Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Past Events" 
+        subtitle="Previous conferences and events where I've spoken"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+        {pastEvents.map((event, index) => (
+          <div data-aos="fade-up" data-aos-delay={Math.min(index * 100, 300)}>
+            <EventCard {...event} />
+          </div>
+        ))}
+      </div>
+
+      <!-- Additional Past Events Table -->
+      <div class="mt-20" data-aos="fade-up">
+        <h3 class="text-2xl font-bold text-white mb-8">More Past Events</h3>
+        <div class="overflow-x-auto">
+          <table class="w-full bg-dark-800 rounded-lg overflow-hidden">
+            <thead class="bg-dark-700">
+              <tr>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Date</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Event</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Location</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Topic</th>
+                <th class="px-6 py-4 text-left text-sm font-semibold text-gray-300">Type</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-dark-700" id="eventsTableBody">
+              {morePastEvents.slice(0, itemsPerPage).map(event => (
+                <tr class="hover:bg-dark-700 transition-colors">
+                  <td class="px-6 py-4 text-gray-300">{event.date}</td>
+                  <td class="px-6 py-4 text-white font-medium">
+                    <a 
+                      href={event.url} 
+                      target="_blank" 
+                      rel="noopener noreferrer" 
+                      class="hover:text-primary-400 transition-colors"
+                    >
+                      {event.title}
+                    </a>
+                  </td>
+                  <td class="px-6 py-4 text-gray-300">{event.location}</td>
+                  <td class="px-6 py-4 text-gray-300">{event.topic}</td>
+                  <td class="px-6 py-4">
+                    <span class="px-3 py-1 text-sm rounded-full bg-primary-900/30 text-primary-400">
+                      {event.type}
+                    </span>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
+          <!-- Pagination Controls -->
+          <div class="flex justify-center items-center space-x-2 mt-8">
+            {Array.from({ length: totalPages }).map((_, index) => (
+              <button
+                class={`w-10 h-10 rounded-lg flex items-center justify-center transition-colors ${
+                  index === 0
+                    ? 'bg-primary-600 text-white'
+                    : 'bg-dark-700 text-gray-300 hover:bg-primary-600 hover:text-white'
+                }`}
+                data-page={index + 1}
+              >
+                {index + 1}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Invite to Speak Section -->
+  <section class="py-20 bg-primary-600 text-white">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <h2 class="text-3xl md:text-4xl font-bold mb-6">
+            Invite Me to Speak at Your Event
+          </h2>
+          
+          <p class="text-xl text-primary-100 mb-8">
+            I'm available for conference talks, workshops, webinars, and panel discussions on cloud computing, .NET development, Web3 technologies, and more.
+          </p>
+          
+          <a href="/contact" class="inline-block py-3 px-8 bg-white text-primary-600 hover:bg-gray-100 font-medium rounded-lg transition-colors text-lg">
+            Contact Me
+          </a>
+        </div>
+        
+        <div data-aos="fade-left">
+          <div class="bg-white/10 backdrop-blur-sm p-8 rounded-xl">
+            <h3 class="text-2xl font-semibold mb-6">What I Offer:</h3>
+            <ul class="space-y-4">
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-primary-300 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Keynote presentations on technology trends and innovations</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-primary-300 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Technical workshops and hands-on sessions</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-primary-300 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Panel discussions on developer communities and technology ecosystems</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-primary-300 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Virtual and in-person presentations worldwide</span>
+              </li>
+              <li class="flex items-start">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 text-primary-300 flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                </svg>
+                <span>Customized content tailored to your audience and event goals</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const tableBody = document.getElementById('eventsTableBody');
+    const paginationButtons = document.querySelectorAll('[data-page]');
+    const itemsPerPage = 5;
+    const events = {morePastEvents};
+
+    function displayEvents(page) {
+      const start = (page - 1) * itemsPerPage;
+      const end = start + itemsPerPage;
+      const pageEvents = events.slice(start, end);
+
+      if (tableBody) {
+        tableBody.innerHTML = pageEvents.map(event => `
+          <tr class="hover:bg-dark-700 transition-colors">
+            <td class="px-6 py-4 text-gray-300">${event.date}</td>
+            <td class="px-6 py-4 text-white font-medium">
+              <a 
+                href="${event.url}" 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                class="hover:text-primary-400 transition-colors"
+              >
+                ${event.title}
+              </a>
+            </td>
+            <td class="px-6 py-4 text-gray-300">${event.location}</td>
+            <td class="px-6 py-4 text-gray-300">${event.topic}</td>
+            <td class="px-6 py-4">
+              <span class="px-3 py-1 text-sm rounded-full bg-primary-900/30 text-primary-400">
+                ${event.type}
+              </span>
+            </td>
+          </tr>
+        `).join('');
+      }
+
+      // Update active state of pagination buttons
+      paginationButtons.forEach(button => {
+        const buttonPage = parseInt(button.dataset.page);
+        if (buttonPage === page) {
+          button.classList.remove('bg-dark-700', 'text-gray-300');
+          button.classList.add('bg-primary-600', 'text-white');
+        } else {
+          button.classList.remove('bg-primary-600', 'text-white');
+          button.classList.add('bg-dark-700', 'text-gray-300');
+        }
+      });
+    }
+
+    // Add click event listeners to pagination buttons
+    paginationButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const page = parseInt(button.dataset.page);
+        displayEvents(page);
+      });
+    });
+  });
+</script>

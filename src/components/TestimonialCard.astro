@@ -1,0 +1,51 @@
+---
+interface Props {
+  content: string;
+  author: string;
+  role: string;
+  company: string;
+  imageUrl: string;
+  socialPlatform?: 'linkedin' | 'twitter';
+  socialLink?: string;
+}
+
+const { 
+  content, 
+  author, 
+  role, 
+  company, 
+  imageUrl,
+  socialPlatform,
+  socialLink
+} = Astro.props;
+---
+
+<div class="bg-white dark:bg-dark-700 rounded-xl p-8 shadow-lg" data-aos="fade-up">
+  <div class="flex items-center mb-6">
+    <img 
+      src={imageUrl} 
+      alt={author}
+      class="w-16 h-16 rounded-full object-cover mr-4"
+    />
+    <div>
+      <h3 class="text-lg font-semibold text-dark-800 dark:text-white">{author}</h3>
+      <p class="text-dark-600 dark:text-gray-300">{role}</p>
+      <p class="text-primary-600 dark:text-primary-400">{company}</p>
+    </div>
+  </div>
+  
+  <blockquote class="text-dark-600 dark:text-gray-300 mb-6">
+    "{content}"
+  </blockquote>
+  
+  {socialLink && (
+    <a 
+      href={socialLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="inline-flex items-center text-primary-600 dark:text-primary-400 hover:underline"
+    >
+      View on {socialPlatform === 'linkedin' ? 'LinkedIn' : 'Twitter'}
+    </a>
+  )}
+</div>

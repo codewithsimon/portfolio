@@ -1,0 +1,264 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+// Gallery categories and images
+const categories = [
+  {
+    title: "Hackathons",
+    description: "Moments from HackIndia events across the country",
+    images: [
+      {
+        url: "https://images.pexels.com/photos/7096/people-woman-coffee-meeting.jpg",
+        caption: "HackIndia 2024 - Bangalore Edition",
+        location: "Bangalore, India",
+        date: "March 2024"
+      },
+      {
+        url: "https://images.pexels.com/photos/1181396/pexels-photo-1181396.jpeg",
+        caption: "Web3 Hackathon Mumbai",
+        location: "Mumbai, India",
+        date: "February 2024"
+      },
+      {
+        url: "https://images.pexels.com/photos/3182812/pexels-photo-3182812.jpeg",
+        caption: "AI Innovation Hackathon",
+        location: "Delhi, India",
+        date: "January 2024"
+      }
+    ]
+  },
+  {
+    title: "Speaking Engagements",
+    description: "Keynotes and presentations at international conferences",
+    images: [
+      {
+        url: "https://images.pexels.com/photos/2173508/pexels-photo-2173508.jpeg",
+        caption: "Microsoft Build 2024",
+        location: "Seattle, USA",
+        date: "May 2024"
+      },
+      {
+        url: "https://images.pexels.com/photos/1708912/pexels-photo-1708912.jpeg",
+        caption: "WOW Summit Hong Kong",
+        location: "Hong Kong",
+        date: "March 2024"
+      },
+      {
+        url: "https://images.pexels.com/photos/1181435/pexels-photo-1181435.jpeg",
+        caption: "Azure Conference 2024",
+        location: "Amsterdam",
+        date: "February 2024"
+      }
+    ]
+  },
+  {
+    title: "Community Meetups",
+    description: "Local tech community gatherings and workshops",
+    images: [
+      {
+        url: "https://images.pexels.com/photos/1181421/pexels-photo-1181421.jpeg",
+        caption: ".NET Community Meetup",
+        location: "Bangalore, India",
+        date: "March 2024"
+      },
+      {
+        url: "https://images.pexels.com/photos/1181472/pexels-photo-1181472.jpeg",
+        caption: "Cloud Native Workshops",
+        location: "Chennai, India",
+        date: "February 2024"
+      },
+      {
+        url: "https://images.pexels.com/photos/1181524/pexels-photo-1181524.jpeg",
+        caption: "Web3 Developer Meetup",
+        location: "Hyderabad, India",
+        date: "January 2024"
+      }
+    ]
+  },
+  {
+    title: "Press & Media",
+    description: "Features and interviews in tech media",
+    images: [
+      {
+        url: "https://images.pexels.com/photos/2041627/pexels-photo-2041627.jpeg",
+        caption: "TechCrunch Interview",
+        location: "Virtual",
+        date: "March 2024"
+      },
+      {
+        url: "https://images.pexels.com/photos/2041629/pexels-photo-2041629.jpeg",
+        caption: "Forbes Tech Feature",
+        location: "New York, USA",
+        date: "February 2024"
+      },
+      {
+        url: "https://images.pexels.com/photos/2041631/pexels-photo-2041631.jpeg",
+        caption: "Developer Weekly Podcast",
+        location: "Virtual",
+        date: "January 2024"
+      }
+    ]
+  }
+];
+---
+
+<Layout 
+  title="Gallery - Stephen Simon"
+  description="Visual journey through hackathons, speaking engagements, community meetups, and media appearances."
+>
+  <Hero 
+    title="Gallery" 
+    subtitle="A visual journey through events, talks, and community gatherings"
+    backgroundImage="https://images.pexels.com/photos/2041627/pexels-photo-2041627.jpeg"
+  />
+
+  {categories.map((category, index) => (
+    <section class={`py-20 ${index % 2 === 0 ? 'bg-dark-900' : 'bg-dark-800'}`}>
+      <div class="container mx-auto px-4 lg:px-8">
+        <SectionTitle 
+          title={category.title}
+          subtitle={category.description}
+          alignment="center"
+        />
+        
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12 gallery-section">
+          {category.images.map((image, imageIndex) => (
+            <a 
+              href={image.url}
+              class="group relative overflow-hidden rounded-xl aspect-video cursor-pointer"
+              data-aos="fade-up"
+              data-aos-delay={imageIndex * 100}
+              data-pswp-width="1600"
+              data-pswp-height="1000"
+            >
+              <img 
+                src={image.url}
+                alt={image.caption}
+                class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-dark-900/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-6">
+                  <h3 class="text-xl font-semibold text-white mb-2">{image.caption}</h3>
+                  <div class="flex items-center text-gray-300 text-sm">
+                    <span class="mr-3">{image.location}</span>
+                    <span>•</span>
+                    <span class="ml-3">{image.date}</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-primary-600 text-white">
+    <div class="container mx-auto px-4 lg:px-8 text-center">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6">Want to Feature in Our Next Event?</h2>
+      <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+        Join us at upcoming hackathons, conferences, or community meetups.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/events" class="py-3 px-8 bg-white text-primary-600 hover:bg-gray-100 font-medium rounded-lg transition-colors">
+          View Upcoming Events
+        </a>
+        <a href="/contact" class="py-3 px-8 bg-primary-700 hover:bg-primary-800 text-white font-medium rounded-lg transition-colors">
+          Get in Touch
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/photoswipe@5.4.3/dist/photoswipe.css">
+
+<!-- Root element of PhotoSwipe -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="pswp__bg"></div>
+  <div class="pswp__scroll-wrap">
+    <div class="pswp__container">
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+      <div class="pswp__item"></div>
+    </div>
+    <div class="pswp__ui pswp__ui--hidden">
+      <div class="pswp__top-bar">
+        <div class="pswp__counter"></div>
+        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+        <button class="pswp__button pswp__button--share" title="Share"></button>
+        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+        <div class="pswp__preloader">
+          <div class="pswp__preloader__icn">
+            <div class="pswp__preloader__cut">
+              <div class="pswp__preloader__donut"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+        <div class="pswp__share-tooltip"></div>
+      </div>
+      <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)"></button>
+      <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)"></button>
+      <div class="pswp__caption">
+        <div class="pswp__caption__center"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  import PhotoSwipe from 'photoswipe';
+
+  function initPhotoSwipe() {
+    const galleries = document.querySelectorAll('.gallery-section');
+    
+    galleries.forEach(gallery => {
+      const links = gallery.querySelectorAll('a');
+      
+      links.forEach(link => {
+        link.addEventListener('click', (e) => {
+          e.preventDefault();
+          
+          const items = Array.from(links).map(linkEl => {
+            const img = linkEl.querySelector('img');
+            return {
+              src: linkEl.href,
+              w: parseInt(linkEl.dataset.pswpWidth || '1600', 10),
+              h: parseInt(linkEl.dataset.pswpHeight || '1000', 10),
+              alt: img?.alt || ''
+            };
+          });
+
+          const options = {
+            index: Array.from(links).indexOf(link),
+            bgOpacity: 0.9,
+            showHideOpacity: true,
+            closeOnScroll: false,
+            clickToCloseNonZoomable: false,
+            errorMsg: 'The image could not be loaded.',
+            history: false
+          };
+
+          const pswp = new PhotoSwipe({
+            dataSource: items,
+            options
+          });
+
+          pswp.init();
+        });
+      });
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initPhotoSwipe);
+
+  // Initialize on view transitions
+  document.addEventListener('astro:page-load', initPhotoSwipe);
+</script>

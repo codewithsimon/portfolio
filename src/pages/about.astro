@@ -1,0 +1,262 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Hero from '../components/Hero.astro';
+import SectionTitle from '../components/SectionTitle.astro';
+
+// Career timeline
+const careerTimeline = [
+  {
+    year: "2022 - Present",
+    role: "Regional Director (India and Asia Pacific)",
+    company: "C# Corner",
+    description: "Leading community initiatives, developer engagement, and technology advocacy across the region. Building strong networks with technology leaders and organizing major developer events."
+  },
+  {
+    year: "2020 - Present",
+    role: "Host & Producer",
+    company: "CSharp TV",
+    description: "Running a popular developer streaming platform with shows like 'Azure for Sure' and 'A Dash of .NET'. Interviewing technology leaders and teaching complex technologies in accessible formats."
+  },
+  {
+    year: "2019 - Present",
+    role: "Founder & Organizer",
+    company: "HackIndia",
+    description: "Founded India's biggest Web3 and AI Hackathon, reaching over 30,000 participants across 250+ colleges and universities in 25+ cities throughout India."
+  },
+  {
+    year: "2018 - 2022",
+    role: "Technology Evangelist",
+    company: "Microsoft Technologies",
+    description: "Evangelizing Microsoft technologies through workshops, talks, and community events. Focusing on Azure, .NET, and developer tooling to help organizations adopt new technologies."
+  }
+];
+
+// Skills
+const skills = [
+  { name: "Public Speaking", level: 95 },
+  { name: "Community Management", level: 90 },
+  { name: "Azure Cloud", level: 85 },
+  { name: ".NET Development", level: 90 },
+  { name: "Event Organization", level: 95 },
+  { name: "Technical Writing", level: 85 },
+  { name: "Mentorship", level: 90 },
+  { name: "Web3 Technologies", level: 80 }
+];
+
+// Certifications
+const certifications = [
+  { 
+    name: "Microsoft Certified: Azure Solutions Architect Expert", 
+    issuer: "Microsoft",
+    year: "2023",
+    image: "/images/cert-azure-architect.jpg"
+  },
+  { 
+    name: "Microsoft Certified: DevOps Engineer Expert", 
+    issuer: "Microsoft",
+    year: "2022",
+    image: "/images/cert-devops.jpg"
+  },
+  { 
+    name: "Certified Blockchain Developer", 
+    issuer: "Blockchain Council",
+    year: "2021",
+    image: "/images/cert-blockchain.jpg"
+  }
+];
+---
+
+<Layout 
+  title="About Stephen Simon - Regional Director at C# Corner | Developer Advocate | Speaker"
+  description="Learn more about Stephen Simon, Regional Director at C# Corner, developer advocate, and international speaker specialized in .NET, Azure, and Web3 technologies."
+>
+  <Hero 
+    title="About Me" 
+    subtitle="My journey, experience, and passion for technology"
+    backgroundImage="/images/about-hero.jpg"
+  />
+
+  <!-- Bio Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+        <div data-aos="fade-right">
+          <img 
+            src="/images/profile-extended.jpg" 
+            alt="Stephen Simon" 
+            class="w-full h-auto rounded-xl shadow-xl"
+          />
+        </div>
+        
+        <div data-aos="fade-left">
+          <SectionTitle 
+            title="My Story" 
+            subtitle="A passion for technology and community building"
+          />
+          
+          <div class="space-y-6 text-dark-600 dark:text-gray-300">
+            <p class="text-lg">
+              As the Regional Director (India and Asia Pacific) for C# Corner, one of the largest global developer communities, I'm passionate about driving innovation and connecting developers worldwide.
+            </p>
+            
+            <p class="text-lg">
+              My journey in technology began with a deep fascination for how software can transform lives and businesses. This passion led me to become not just a developer, but an advocate, speaker, and community leader.
+            </p>
+            
+            <p class="text-lg">
+              I run CSharp TV, a popular dev streaming destination where I host my own shows, including "Azure for Sure" and "A Dash of .Net". These platforms allow me to share knowledge, interview industry experts, and build connections with developers around the world.
+            </p>
+            
+            <p class="text-lg">
+              As an international speaker, I've had the privilege of sharing my insights at renowned events like Experts Live Europe and WOW Summit Hong Kong, focusing on cloud technologies, .NET development, and Web3 innovations.
+            </p>
+            
+            <p class="text-lg">
+              One of my proudest achievements is founding and organizing HackIndia - India's biggest Web3 and AI Hackathon. Through this initiative, we've organized 30 hackathons, reaching 30,000 participants across 250 colleges and universities in more than 25 cities throughout India.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Career Timeline -->
+  <section class="py-20 bg-gray-50 dark:bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Career Journey" 
+        subtitle="Key milestones in my professional path"
+        alignment="center"
+      />
+      
+      <div class="relative mt-12">
+        <!-- Timeline Line -->
+        <div class="hidden md:block absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-primary-200 dark:bg-primary-900"></div>
+        
+        {careerTimeline.map((item, index) => (
+          <div 
+            class={`relative mb-12 md:mb-0 ${index % 2 === 0 ? 'md:ml-auto md:pl-12' : 'md:mr-auto md:pr-12'} md:w-1/2`}
+            data-aos={index % 2 === 0 ? "fade-left" : "fade-right"}
+          >
+            <!-- Timeline circle marker -->
+            <div class="hidden md:block absolute top-0 h-6 w-6 rounded-full bg-primary-600 border-4 border-white dark:border-dark-900 shadow-lg" style={`${index % 2 === 0 ? 'left: -0.75rem' : 'right: -0.75rem'}; margin-top: 1.5rem;`}></div>
+            
+            <div class="relative md:px-8 py-5">
+              <div class="bg-white dark:bg-dark-700 p-6 rounded-lg shadow-lg">
+                <div class="text-primary-600 dark:text-primary-400 font-bold mb-2">{item.year}</div>
+                <h3 class="text-xl font-semibold text-dark-800 dark:text-white mb-1">{item.role}</h3>
+                <div class="text-primary-600 dark:text-primary-400 mb-4">{item.company}</div>
+                <p class="text-dark-600 dark:text-gray-300">{item.description}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Skills & Expertise" 
+        subtitle="Areas where I excel and bring value"
+        alignment="center"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mt-12">
+        <div data-aos="fade-right">
+          <div class="space-y-6">
+            {skills.slice(0, 4).map(skill => (
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium text-dark-700 dark:text-gray-300">{skill.name}</span>
+                  <span class="text-primary-600 dark:text-primary-400">{skill.level}%</span>
+                </div>
+                <div class="h-3 w-full bg-gray-200 dark:bg-dark-700 rounded-full overflow-hidden">
+                  <div 
+                    class="h-full bg-primary-600 rounded-full" 
+                    style={`width: ${skill.level}%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        <div data-aos="fade-left">
+          <div class="space-y-6">
+            {skills.slice(4).map(skill => (
+              <div>
+                <div class="flex justify-between mb-2">
+                  <span class="font-medium text-dark-700 dark:text-gray-300">{skill.name}</span>
+                  <span class="text-primary-600 dark:text-primary-400">{skill.level}%</span>
+                </div>
+                <div class="h-3 w-full bg-gray-200 dark:bg-dark-700 rounded-full overflow-hidden">
+                  <div 
+                    class="h-full bg-primary-600 rounded-full" 
+                    style={`width: ${skill.level}%`}
+                  ></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Certifications -->
+  <section class="py-20 bg-gray-50 dark:bg-dark-900">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Certifications" 
+        subtitle="Professional qualifications and achievements"
+        alignment="center"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+        {certifications.map((cert, index) => (
+          <div 
+            class="bg-white dark:bg-dark-700 rounded-xl overflow-hidden shadow-lg transition-transform hover:translate-y-[-5px]"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <img 
+              src={cert.image} 
+              alt={cert.name}
+              class="w-full h-48 object-cover"
+            />
+            <div class="p-6">
+              <h3 class="text-lg font-semibold text-dark-800 dark:text-white mb-2">{cert.name}</h3>
+              <div class="flex justify-between text-dark-500 dark:text-gray-400">
+                <span>{cert.issuer}</span>
+                <span>{cert.year}</span>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="py-20 bg-primary-600 text-white">
+    <div class="container mx-auto px-4 lg:px-8 text-center" data-aos="fade-up">
+      <h2 class="text-3xl md:text-4xl font-bold mb-6 max-w-3xl mx-auto">
+        Let's Connect and Collaborate
+      </h2>
+      <p class="text-xl text-primary-100 mb-8 max-w-2xl mx-auto">
+        Whether you're looking for a speaker, mentor, or collaboration partner, I'm always excited to discuss new opportunities.
+      </p>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="/contact" class="py-3 px-8 bg-white text-primary-600 hover:bg-gray-100 font-medium rounded-lg transition-colors text-lg">
+          Contact Me
+        </a>
+        <a href="/media-kit" class="py-3 px-8 bg-primary-700 hover:bg-primary-800 text-white font-medium rounded-lg transition-colors text-lg">
+          View Media Kit
+        </a>
+      </div>
+    </div>
+  </section>
+</Layout>
