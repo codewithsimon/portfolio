@@ -7,7 +7,7 @@ export default defineConfig({
     tailwind(),
     mdx()
   ],
-  site: 'http://codewithsimon.dev',  
+  site: 'https://codewithsimon.dev',  
   markdown: {
     shikiConfig: {
       theme: 'dracula',
