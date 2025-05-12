@@ -7,6 +7,7 @@ import BlogCard from '../components/BlogCard.astro';
 import ClientLogos from '../components/ClientLogos.astro';
 import TechnicalExpertise from '../components/TechnicalExpertise.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
+import simon from '../assets/homepage/3.jpg';
 
 // Sample data for events
 const featuredEvents = [
@@ -123,7 +124,7 @@ const azureConfStats = [
         </div>
         <div class="relative" data-aos="fade-left">
           <img 
-            src="/src/assets/homepage/3.jpg" 
+            src={simon.src}
             alt="Stephen Simon" 
             class="w-full h-[600px] object-cover rounded-2xl shadow-2xl"
           />
