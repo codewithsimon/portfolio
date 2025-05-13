@@ -23,11 +23,14 @@ const {
 
 <article class="bg-white dark:bg-dark-700 rounded-xl overflow-hidden shadow-lg transition-transform hover:translate-y-[-5px] hover:shadow-xl">
   <div class="relative h-56 overflow-hidden">
-    <Image 
-      src={imageUrl} 
+    <Image
+      src={imageUrl}
       alt={title} 
-      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
-       quality={100}
+      class="w-full h-full object-cover transition-transform duration-500 hover:scale-105"  
+      loading="lazy"
+      quality={100} 
+      width={800}
+      height={450}        
     />
     <div class="absolute top-4 left-4 bg-primary-600 text-white text-sm font-semibold py-1 px-3 rounded-full">
       {date}
