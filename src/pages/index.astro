@@ -7,7 +7,15 @@ import BlogCard from '../components/BlogCard.astro';
 import ClientLogos from '../components/ClientLogos.astro';
 import TechnicalExpertise from '../components/TechnicalExpertise.astro';
 import TestimonialCard from '../components/TestimonialCard.astro';
-import simon from '../assets/homepage/3.jpg';
+
+// Images
+import { Image } from 'astro:assets';
+import herosection from '../assets/homepage/hero-section.jpg';
+import hackindia from '../assets/homepage/HackIndia.jpg';
+import azureconference from '../assets/homepage/azure-conference.png';
+import exppertsliveeu2024 from '../assets/events/Experts-Live-Europe-2024.jpeg';
+import wowsummit from '../assets/events/WOW-Summit Hong-Kong.jpg';
+import microsfoftaitour2024 from '../assets/events/Microsoft-AI-Tour.jpg';
 
 // Sample data for events
 const featuredEvents = [
@@ -15,7 +23,7 @@ const featuredEvents = [
     title: "Experts Live Europe 2025",
     date: "September 23-25, 2025",
     location: "Budapest, Hungary",
-    imageUrl: "/src/assets/events/Experts Live Europe 2025.jpeg",
+    imageUrl: exppertsliveeu2024,
     description: "Keynote speaker discussing leadership in technology and the future of cloud computing at Europe's premier tech conference.",
     url: "/events/experts-live-europe-2024"
   },
@@ -23,7 +31,7 @@ const featuredEvents = [
     title: "WOW Summit Hong Kong",
     date: "March 26-27, 2024",
     location: "Hong Kong",
-    imageUrl: "/src/assets/events/WOW Summit Hong Kong.jpg",
+    imageUrl: wowsummit,
     description: "Executive panel on digital transformation and the role of Web3 in enterprise innovation at this global leadership summit.",
     url: "/events/wow-summit-hong-kong-2024"
   },
@@ -31,7 +39,7 @@ const featuredEvents = [
     title: "Microsoft AI Tour",
     date: "Feb 08, 2024",
     location: "Bengaluru, India",
-    imageUrl: "/src/assets/events/Microsoft-AI-Tour.jpg",
+    imageUrl: microsfoftaitour2024,
     description: "Featured speaker on enterprise architecture and strategic technology adoption at Microsoft's flagship conference.",
     url: "/events/microsoft-build-2024"
   }
@@ -114,7 +122,7 @@ const azureConfStats = [
             Stephen Simon
           </h1>
           <p class="text-xl lg:text-2xl text-gray-300 mb-8 leading-relaxed mt-4">
-            Regional Director at C# Corner | Technology Leader | International Speaker
+            Cloud & AI Advocate | Technology Leader | International Speaker
           </p>
           <div class="flex flex-wrap gap-4">
             <a href="/about" class="py-3 px-8 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors text-lg">
@@ -123,10 +131,11 @@ const azureConfStats = [
           </div>
         </div>
         <div class="relative" data-aos="fade-left">
-          <img 
-            src={simon.src}
+          <Image 
+            src={herosection}
             alt="Stephen Simon" 
             class="w-full h-[600px] object-cover rounded-2xl shadow-2xl"
+            quality={100}
           />
           <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent to-transparent"></div>
         </div>
@@ -142,10 +151,11 @@ const azureConfStats = [
     <div class="container mx-auto px-4 lg:px-8">
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
         <div class="relative" data-aos="fade-right">
-          <img 
-            src="/src/assets/homepage/2.jpg" 
+          <Image 
+            src={hackindia}
             alt="HackIndia Event" 
             class="w-full rounded-2xl shadow-2xl"
+            quality={100}
           />
           <div class="absolute inset-0 bg-gradient-to-r from-dark-900/50 to-transparent rounded-2xl"></div>
         </div>
@@ -197,10 +207,11 @@ const azureConfStats = [
         </div>
         
         <div class="relative" data-aos="fade-left">
-          <img 
-            src="/src/assets/homepage/Stephen SIMON Speaking at Azure Conference.png" 
+          <Image 
+            src={azureconference}
             alt="Stephen SIMON Speaking at World's Largest Azure Conference on Microsoft Learn" 
             class="w-full rounded-2xl shadow-2xl"
+            quality={100}
           />
           <div class="absolute inset-0 bg-gradient-to-l from-dark-900/50 to-transparent rounded-2xl"></div>
         </div>
