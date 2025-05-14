@@ -3,10 +3,12 @@ layout: ../../layouts/BlogPost.astro
 title: Faster Prototyping with AI - Google AI Studio
 date: May 04, 2025
 category: Gemini
-excerpt: A deep dive into best practices for developing cloud-native applications using Azure services and modern architectural patterns for scalable, resilient systems.
-imageUrl: /src/assets/blog/faster-prototyping-with-ai-google-ai-studio/thumbnail.jpg
+excerpt: Explore how Google AI Studio is revolutionizing the prototyping process with advanced AI capabilities.
+imageUrl: ../../assets/blog/faster-prototyping-with-ai-google-ai-studio/thumbnail.jpg
 slug: faster-prototyping-with-ai-google-ai-studio
 ---
+
+
 
 Google launched its largest and most capable AI model, Gemini in late 2023. Ever since Gemini has gained a lot of popularity and has many models that can be used for different use cases. Gemini was built from the ground up to be a multimodal, that means it can generalize and seamlessly understand, operate across, and combine different types of information, including text, code, audio, image, and video. 
 
@@ -16,23 +18,23 @@ Google AI Studio is a web-based development environment that allows you to quick
 
 Upon visiting the website, you are greeted with a chat interface which looks very similar to any other LLM Chat. And, did you realise that you didn’t need any fancy email to login? Any gmail id works.
 
-![Google AI Studio Landing Page.](/src/assets/blog/faster-prototyping-with-ai-google-ai-studio/Google%20AI%20Studio%20Landing%20Page.jpg)
+![Google AI Studio Landing Page.](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Google-AI-Studio-Landing-Page.jpg)
 
 To get started, you can either write a prompt or you can click on the + icon to work with different kind of files like record audio, take a photo, or work with the files from your drive. At this instance let us use the _Sample Media_ and select _Sherlock Jr. (1924) - 10 min Clip_. Click _Add to Prompt_.
 
-![Google AI Studio Landing Page.](/src/assets/blog/faster-prototyping-with-ai-google-ai-studio/Working-with-Videos-in-faster-prototyping-with-ai-google-ai-studio.jpg)
+![Google AI Studio Landing Page.](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Working-with-Videos-in-Google-AI-Studio.jpg)
 
 Let us ask the Gemini to summarise the video and what is Sherlock wearing and press _Run + CTRL._ Also, please mote that at the bottom right of the video you can see the number of tokens that will be used in this video.
 
-![Video Prompt](/src/assets/blog/faster-prototyping-with-ai-google-ai-studio/Video-Prompt.jpg)
+![Video Prompt](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Video-Prompt.jpg)
 
 The response has a summary and very detailed results on What is Sherlock wearing. 
 
-![Response](/src/assets/blog/faster-prototyping-with-ai-google-ai-studio/Response.jpg)
+![Response](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Response.jpg)
 
 What is also very interesting that you can click on Expand to View Model thoughts and actually read the thinking process to arrive at the summary and costume description. 
 
-![model Thoughts](/src/assets/blog/faster-prototyping-with-ai-google-ai-studio/Model%20Thoughts.jpg)
+![Model Thoughts](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Model-Thoughts.jpg)
 
 
 ## Exploring Google AI Studio Features
@@ -41,19 +43,19 @@ Beyond the core prompting interface, Google AI Studio offers several powerful to
 
 1. **Model Selection:** You can easily switch between different Gemini models available in the studio. You can even use the "Compare" feature to test the same prompt with different models side-by-side to see which performs best for your needs. (As shown in the video, Gemini Flash is often faster, while Gemini Pro might provide more detailed responses).
 
-    ![Model Selection](/src/assets/blog/faster-prototyping-with-ai-google-ai-studio/Model-Selection.jpg)
+    ![Model Selection](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Model-Selection.jpg)
 
     - *Tip:* Experiment with different models to find the best balance of speed, detail, and complexity for your specific use case.
 2. **Temperature:** This slider controls the *creativity* or randomness of the AI's responses (from 0 to 2).
     - Higher Temperature: More creative, potentially more surprising or varied outputs. Useful for brainstorming or generating diverse ideas.
     - Lower Temperature: More focused, predictable, and deterministic outputs. Useful for tasks requiring accuracy or consistency.
 
-    ![ToolTemperature](/src/assets/blog/faster-prototyping-with-ai-google-ai-studio/Temperature.jpg)
+    ![ToolTemperature](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Temperature.jpg)
 
     - *Tip:* Start with a moderate temperature and adjust based on how creative or consistent you need the output to be.
 3. **Structured Output:** This feature allows you to define the *exact format* you want the AI's response to be in, typically using a schema like JSON. This is incredibly useful for developers who need to integrate AI output into applications or databases in a reproducible way.
 
-    ![Tools](/src/assets/blog/faster-prototyping-with-ai-google-ai-studio/Tools.jpg)
+    ![Tools](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Tools.jpg)
 
     - *Tip:* Use Structured Output when the AI's response needs to be parsed or used programmatically in another system.
 4. **Code Execution:** This tool allows the AI model to execute code within the environment. This can be used for calculations, running scripts, or performing other programmatic tasks based on the prompt.
@@ -70,7 +72,7 @@ Beyond the core prompting interface, Google AI Studio offers several powerful to
 7. **Stream Realtime:** This interactive feature allows you to engage with the AI using text, voice, video, or even screen sharing. You can talk to Gemini using your microphone, show it things using your webcam, or share your screen and get real-time feedback and instructions on what you're working on.
     - *Example from the video:* Showing Gemini a Photoshop project and asking for step-by-step instructions on how to remove an object – the AI provided guidance based on the visual input from the screen share.
 
-    ![Streaming](/src/assets/blog/faster-prototyping-with-ai-google-ai-studio/Stream.jpg)
+    ![Streaming](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Stream.jpg)
 
     - *Tip:* Use Stream Realtime for interactive learning, getting real-time help with tasks (like design or coding), or having dynamic conversations grounded in visual information.
 8. **Tune a Model (Fine-tuning):** Google AI Studio allows you to fine-tune a base Gemini model on your own custom dataset directly within the UI, often without needing to write code. Fine-tuning is used to significantly improve the model's performance on a very specific or niche task.
