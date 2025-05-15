@@ -4,11 +4,10 @@ title: Faster Prototyping with AI - Google AI Studio
 date: May 04, 2025
 category: Gemini
 excerpt: Explore how Google AI Studio is revolutionizing the prototyping process with advanced AI capabilities.
-imageUrl: ../../assets/blog/faster-prototyping-with-ai-google-ai-studio/thumbnail.jpg
+imageUrl: /images/thumbnail.jpg
 slug: faster-prototyping-with-ai-google-ai-studio
+
 ---
-
-
 
 Google launched its largest and most capable AI model, Gemini in late 2023. Ever since Gemini has gained a lot of popularity and has many models that can be used for different use cases. Gemini was built from the ground up to be a multimodal, that means it can generalize and seamlessly understand, operate across, and combine different types of information, including text, code, audio, image, and video. 
 
