@@ -4,10 +4,9 @@ import Hero from '../components/Hero.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import BlogCard from '../components/BlogCard.astro';
 
-
 // Get all blog posts
 const posts = await Astro.glob('./blog/*.md');
-const categories = ["All", "Gemini", "Azure", "Open AI", "Community", "Technology Trends"];
+const categories = ["All", "Gemini", "Azure", "Web3", "Community", "Technology Trends"];
 ---
 
 <Layout 
@@ -26,7 +25,8 @@ const categories = ["All", "Gemini", "Azure", "Open AI", "Community", "Technolog
       <div class="flex flex-wrap justify-center gap-4" data-aos="fade-up">
         {categories.map((category, index) => (
           <button 
-            class={`py-2 px-4 rounded-full transition-colors ${index === 0 ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-dark-700 text-dark-600 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900'}`}
+            class={`category-btn py-2 px-4 rounded-full transition-colors ${index === 0 ? 'bg-primary-600 text-white' : 'bg-gray-100 dark:bg-dark-700 text-dark-600 dark:text-gray-300 hover:bg-primary-100 dark:hover:bg-primary-900'}`}
+            data-category={category}
           >
             {category}
           </button>
@@ -56,9 +56,14 @@ const categories = ["All", "Gemini", "Azure", "Open AI", "Community", "Technolog
   <!-- Blog Posts -->
   <section class="py-12">
     <div class="container mx-auto px-4 lg:px-8">
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="blog-grid">
         {posts.map((post, index) => (
-          <div data-aos="fade-up" data-aos-delay={Math.min(index * 50, 300)}>
+          <div 
+            data-aos="fade-up" 
+            data-aos-delay={Math.min(index * 50, 300)}
+            data-category={post.frontmatter.category}
+            class="blog-post"
+          >
             <BlogCard 
               title={post.frontmatter.title}
               date={post.frontmatter.date}
@@ -105,3 +110,44 @@ const categories = ["All", "Gemini", "Azure", "Open AI", "Community", "Technolog
     </div>
   </section>
 </Layout>
+
+<script>
+  function initCategoryFilter() {
+    const categoryButtons = document.querySelectorAll('.category-btn');
+    const blogPosts = document.querySelectorAll('.blog-post');
+
+    function filterPosts(category) {
+      blogPosts.forEach(post => {
+        const postCategory = post.dataset.category;
+        if (category === 'All' || postCategory === category) {
+          post.style.display = 'block';
+        } else {
+          post.style.display = 'none';
+        }
+      });
+    }
+
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        // Remove active class from all buttons
+        categoryButtons.forEach(btn => {
+          btn.classList.remove('bg-primary-600', 'text-white');
+          btn.classList.add('bg-gray-100', 'dark:bg-dark-700', 'text-dark-600', 'dark:text-gray-300');
+        });
+
+        // Add active class to clicked button
+        button.classList.remove('bg-gray-100', 'dark:bg-dark-700', 'text-dark-600', 'dark:text-gray-300');
+        button.classList.add('bg-primary-600', 'text-white');
+
+        // Filter posts
+        filterPosts(button.dataset.category);
+      });
+    });
+  }
+
+  // Initialize on page load
+  document.addEventListener('DOMContentLoaded', initCategoryFilter);
+
+  // Initialize on view transitions
+  document.addEventListener('astro:page-load', initCategoryFilter);
+</script>

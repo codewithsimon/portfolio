@@ -39,7 +39,8 @@ const navItems = [
       <!-- Mobile Menu Button -->
       <button 
         id="mobileMenuBtn"
-        class="lg:hidden flex flex-col justify-center items-center w-10 h-10 relative z-50"
+        class="lg:hidden flex flex-col justify-center items-center w-10 h-10 relative"
+        style="z-index: 50;"
         aria-label="Menu"
       >
         <span class="w-6 h-0.5 bg-white mb-1.5 transform transition-all duration-300"></span>
@@ -52,7 +53,8 @@ const navItems = [
   <!-- Mobile Menu -->
   <div 
     id="mobileMenu"
-    class="fixed inset-0 bg-dark-900/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 lg:hidden z-40"
+    class="fixed inset-0 bg-dark-900/95 backdrop-blur-lg transform translate-x-full transition-transform duration-300 lg:hidden"
+    style="z-index: 40;"
   >
     <div class="container mx-auto px-4 py-24">
       <div class="flex flex-col items-center space-y-8">
@@ -69,6 +71,26 @@ const navItems = [
   </div>
 </header>
 
+<style>
+  .font-playfair {
+    font-family: 'Playfair Display', serif;
+  }
+
+  /* Prevent body scroll when menu is open */
+  :global(body.menu-open) {
+    overflow: hidden !important;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: var(--scroll-position);
+  }
+
+  #mobileMenu {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+</style>
+
 <script>
   function initNavigation() {
     const header = document.getElementById('header');
@@ -83,8 +105,10 @@ const navItems = [
       isMenuOpen = !isMenuOpen;
       
       if (isMenuOpen) {
+        // Store current scroll position
+        document.documentElement.style.setProperty('--scroll-position', `-${window.scrollY}px`);
         mobileMenu?.classList.remove('translate-x-full');
-        document.body.classList.add('overflow-hidden');
+        document.body.classList.add('menu-open');
         spans?.forEach((span, index) => {
           if (index === 0) span.classList.add('rotate-45', 'translate-y-2');
           if (index === 1) span.classList.add('opacity-0');
@@ -92,7 +116,11 @@ const navItems = [
         });
       } else {
         mobileMenu?.classList.add('translate-x-full');
-        document.body.classList.remove('overflow-hidden');
+        document.body.classList.remove('menu-open');
+        // Restore scroll position
+        const scrollY = document.documentElement.style.getPropertyValue('--scroll-position');
+        document.documentElement.style.removeProperty('--scroll-position');
+        window.scrollTo(0, parseInt(scrollY || '0') * -1);
         spans?.forEach((span, index) => {
           if (index === 0) span.classList.remove('rotate-45', 'translate-y-2');
           if (index === 1) span.classList.remove('opacity-0');
@@ -132,15 +160,23 @@ const navItems = [
       lastScroll = currentScroll;
     });
 
-    // Reset menu state
-    isMenuOpen = false;
-    mobileMenu?.classList.add('translate-x-full');
-    document.body.classList.remove('overflow-hidden');
-    spans?.forEach((span, index) => {
-      if (index === 0) span.classList.remove('rotate-45', 'translate-y-2');
-      if (index === 1) span.classList.remove('opacity-0');
-      if (index === 2) span.classList.remove('-rotate-45', '-translate-y-2');
-    });
+    function resetMenu() {
+      isMenuOpen = false;
+      mobileMenu?.classList.add('translate-x-full');
+      document.body.classList.remove('menu-open');
+      document.documentElement.style.removeProperty('--scroll-position');
+      spans?.forEach((span, index) => {
+        if (index === 0) span.classList.remove('rotate-45', 'translate-y-2');
+        if (index === 1) span.classList.remove('opacity-0');
+        if (index === 2) span.classList.remove('-rotate-45', '-translate-y-2');
+      });
+    }
+
+    // Reset on page navigation
+    document.addEventListener('astro:after-swap', resetMenu);
+
+    // Initial reset
+    resetMenu();
   }
 
   // Initialize on page load
@@ -149,9 +185,3 @@ const navItems = [
   // Initialize on view transitions
   document.addEventListener('astro:page-load', initNavigation);
 </script>
-
-<style>
-  .font-playfair {
-    font-family: 'Playfair Display', serif;
-  }
-</style>
