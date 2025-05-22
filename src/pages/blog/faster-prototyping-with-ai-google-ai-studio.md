@@ -4,7 +4,7 @@ title: Faster Prototyping with AI - Google AI Studio
 date: May 04, 2025
 category: Gemini
 excerpt: Explore how Google AI Studio is revolutionizing the prototyping process with advanced AI capabilities.
-imageUrl: /images/thumbnail.jpg
+imageUrl: /images/faster-prototyping-with-ai-google-ai-studio.jpg
 slug: faster-prototyping-with-ai-google-ai-studio
 
 ---
