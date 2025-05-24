@@ -21,6 +21,7 @@ Upon visiting the website, you are greeted with a chat interface which looks ver
 
 To get started, you can either write a prompt or you can click on the + icon to work with different kind of files like record audio, take a photo, or work with the files from your drive. At this instance let us use the _Sample Media_ and select _Sherlock Jr. (1924) - 10 min Clip_. Click _Add to Prompt_.
 
+
 ![Google AI Studio Landing Page.](../../assets/blog/faster-prototyping-with-ai-google-ai-studio/Working-with-Videos-in-Google-AI-Studio.jpg)
 
 Let us ask the Gemini to summarise the video and what is Sherlock wearing and press _Run + CTRL._ Also, please mote that at the bottom right of the video you can see the number of tokens that will be used in this video.
