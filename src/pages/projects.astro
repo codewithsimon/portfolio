@@ -1,32 +1,19 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
+import { Image } from 'astro:assets';
+import aiquizcraft from '../assets/projects/ai-quiz-craft.jpg';
 
 const projects = [
   {
-    name: "Enterprise Resource Management System",
-    description: "A comprehensive ERP solution built for large-scale organizations, featuring real-time analytics, resource planning, and automated workflows.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&h=500&fit=crop",
-    technologies: ["Azure", ".NET Core", "React", "SQL Server"],
-    github: "https://github.com/username/erp-system",
-    dimensions: "800x500px"
-  },
-  {
-    name: "Blockchain Trading Platform",
-    description: "Decentralized trading platform leveraging smart contracts for secure and transparent transactions in the DeFi space.",
-    image: "https://images.unsplash.com/photo-1639322537228-f710d846310a?w=800&h=500&fit=crop",
-    technologies: ["Ethereum", "Solidity", "Web3.js", "Next.js"],
-    github: "https://github.com/username/blockchain-trading",
-    dimensions: "800x500px"
-  },
-  {
-    name: "AI-Powered Analytics Dashboard",
-    description: "Real-time analytics platform using machine learning to provide predictive insights and data visualization.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&h=500&fit=crop",
-    technologies: ["Python", "TensorFlow", "React", "Node.js"],
-    github: "https://github.com/username/ai-analytics",
+    name: "AI Quiz Craft",
+    description: "AI Quiz Craft leverages Google's Gemini API to automatically generate customized quiz questions on any topic.",
+    image: aiquizcraft,
+    technologies: ["Gemini","React", "Github Pages"],
+    github: "https://github.com/codewithsimon/ai-quiz-craft",
     dimensions: "800x500px"
   }
+  
 ];
 ---
 
@@ -75,10 +62,12 @@ const projects = [
             data-aos-delay={index * 100}
           >
             <div class="relative h-[400px]">
-              <img 
+              <Image
+                loading="lazy" 
                 src={project.image} 
                 alt={project.name}
                 class="w-full h-full object-cover"
+                quality={100}
               />
               <div class="absolute inset-0 bg-gradient-to-t from-dark-900 via-transparent opacity-60"></div>
             </div>
