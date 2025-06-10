@@ -2,49 +2,190 @@
 import Layout from '../layouts/Layout.astro';
 import Hero from '../components/Hero.astro';
 import SectionTitle from '../components/SectionTitle.astro';
+import { Image } from 'astro:assets';
+
+// Importing images for A Dash of .NET episodes
+import episode1 from '../assets/videos/a-dash-of-dotNET/1.png';
+import episode2 from '../assets/videos/a-dash-of-dotNET/2.png';
+import episode3 from '../assets/videos/a-dash-of-dotNET/3.png';
+import episode4 from '../assets/videos/a-dash-of-dotNET/4.png';
+import episode5 from '../assets/videos/a-dash-of-dotNET/5.png';
+import episode6 from '../assets/videos/a-dash-of-dotNET/6.png';
+import episode7 from '../assets/videos/a-dash-of-dotNET/7.png';
+import episode8 from '../assets/videos/a-dash-of-dotNET/8.png';
+import episode9 from '../assets/videos/a-dash-of-dotNET/9.png';
+import episode10 from '../assets/videos/a-dash-of-dotNET/10.png';
+import episode11 from '../assets/videos/a-dash-of-dotNET/11.png';
+import episode12 from '../assets/videos/a-dash-of-dotNET/12.png';
+
+// Importing images for Azure for Sure episodes
+import episode1Azure from '../assets/videos/azure-for-sure/1.jpg';
+import episode2Azure from '../assets/videos/azure-for-sure/2.jpg';
+import episode3Azure from '../assets/videos/azure-for-sure/3.jpg';
+import episode4Azure from '../assets/videos/azure-for-sure/4.jpg';
+import episode5Azure from '../assets/videos/azure-for-sure/5.jpg';
+import episode6Azure from '../assets/videos/azure-for-sure/6.jpg';
+import episode7Azure from '../assets/videos/azure-for-sure/7.jpg';
+import episode8Azure from '../assets/videos/azure-for-sure/8.jpg';
+import episode9Azure from '../assets/videos/azure-for-sure/9.jpg';
+import episode10Azure from '../assets/videos/azure-for-sure/10.jpg';
+import episode11Azure from '../assets/videos/azure-for-sure/11.jpg';
+import episode12Azure from '../assets/videos/azure-for-sure/12.jpg';
+
+
 
 // Azure and Cloud Computing Videos
 const azureVideos = [
   {
-    title: "Building Scalable Applications with Azure",
-    description: "Learn how to architect and deploy highly scalable applications using Azure services.",
-    thumbnail: "https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg",
-    url: "https://youtube.com/watch?v=example1"
+    title: "Starting with Azure...",
+    description: "Foundational knowledge of cloud services and how those services are provided with Microsoft Azure",
+    thumbnail: episode1Azure,
+    url: "https://www.youtube.com/live/tkhRx2TH16w?si=iedJIieguy0IdkuK"
   },
   {
-    title: "Azure DevOps Best Practices",
-    description: "Essential DevOps practices for modern cloud applications using Azure DevOps.",
-    thumbnail: "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg",
-    url: "https://youtube.com/watch?v=example2"
+    title: "Going Inside with Microsoft Teams",
+    description: "Learn how Teams and Azure work great together ",
+    thumbnail: episode2Azure,
+    url: "https://www.youtube.com/live/CbPkeOjcxVo?si=_HuQ14OP_q_l6ZP1K"
   },
   {
-    title: "Serverless with Azure Functions",
-    description: "Deep dive into serverless computing using Azure Functions.",
-    thumbnail: "https://images.pexels.com/photos/1181244/pexels-photo-1181244.jpeg",
-    url: "https://youtube.com/watch?v=example3"
-  }
+    title: "Collaborative Apps with Microsoft Cloud",
+    description: "Build some great Collaborative Apps with Microsoft Cloud",
+    thumbnail: episode3Azure,
+    url: "https://www.youtube.com/live/7PvG78h3sQM?si=O1h8Thpu3MeZgE1e"
+  },
+  {
+    title: "From 3D model to AI on the Edge",
+    description: "Synthetic data is an inexpensive alternative to real world data that is used to train and improve AI models.",
+    thumbnail: episode4Azure,
+    url: "https://www.youtube.com/live/KoT93fGYUOE?si=SYbc1doqZH4_Pneg"
+  },
+  {
+    title: "When super powers combine: Azure & Octopus",
+    description: "Learn how Octopus Deploy and Azure work great together",
+    thumbnail: episode5Azure,
+    url: "https://www.youtube.com/live/1akEGlXW-uI?si=BZVxdSvYDsEHHNL7"
+  },
+  {
+    title: "Serverless in Azure",
+    description: "Deliver more value to the core of your business by minimising the time and resources you spend on infrastructure-related requirements",
+    thumbnail: episode6Azure,
+    url: "https://www.youtube.com/live/n5Psypd2Rqg?si=yT-0ta3cDdbovAsz"
+  },
+  {
+    title: "First Guide to Azure IoT ",
+    description: "What is the Internet of Things is and how you can plug Azure into your learning journey",
+    thumbnail: episode7Azure,
+    url: "https://www.youtube.com/live/B7GMWQQdc0Q?si=iAmascQU4d2lZrIZ"
+  },
+  {
+    title: "I Find Your Lack Of Azure Governance Disturbing ",
+    description: "Azure Governance Best practices and how to build a Governance strategy from scratch",
+    thumbnail: episode8Azure,
+    url: "https://www.youtube.com/live/_6dDb2EcsKo?si=7dXZIczNdWrAwN10"
+  },  
+  {
+    title: "Automate Document Processing with Azure Form Recognizer ",
+    description: "Learn about Azure Conversational Language",
+    thumbnail: episode9Azure,
+    url: "https://www.youtube.com/live/fp8Fx_lHo6w?si=xY6YgoXRlERYuZNX"
+  },  
+  {
+    title: "Central Network Management in Azure",
+    description: "Learn what is Central Network Management in Azure",
+    thumbnail: episode10Azure,
+    url: "https://www.youtube.com/live/zLAXN-JQ268?si=QezSzpuc5A6mtkYh"
+  },
+  {
+    title: "The Power of WebApps and Azure",
+    description: "This session covers how to use a modern list column formatting to trigger Azure Automation. ",
+    thumbnail: episode11Azure,
+    url: "https://www.youtube.com/live/w0zm6NyysjU?si=prq2ca10i6WeNrmF"
+  },
+  {
+    title: "Chaos Engineering for Azure workloads",
+    description: "What chaos engineering is about, and see Chaos Studio in action in his demo-packed session",
+    thumbnail: episode12Azure,
+    url: "https://www.youtube.com/live/98iE9nYGKso?si=_5ZC6iAQSy3bA817"
+  },
+  
 ];
 
-// .NET Development Videos
-const dotnetVideos = [
+// A Dash of .Net Development Videos
+const aDashOfDotNetVideos = [
   {
-    title: "Modern .NET Development Patterns",
-    description: "Explore modern development patterns and best practices in .NET.",
-    thumbnail: "https://images.pexels.com/photos/1181263/pexels-photo-1181263.jpeg",
-    url: "https://youtube.com/watch?v=example4"
+    title: "5 Proven Blazor Architecture Tips",
+    description: "Five proven Blazor architecture tips to help you build scalable, maintainable, and performant Blazor applications.",
+    thumbnail: episode1,
+    url: "https://www.youtube.com/live/06sCsc0NrpQ?si=iEd_HRvP8a8BoT-R"
   },
   {
-    title: "Building APIs with .NET Core",
-    description: "Learn how to create robust and scalable APIs using .NET Core.",
-    thumbnail: "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg",
-    url: "https://youtube.com/watch?v=example5"
+    title: "Write Custom IntelliSense Suggestions in Visual Studio",
+    description: "Create personalized IntelliSense suggestions tailored to your specific needs",
+    thumbnail: episode2,
+    url: "https://www.youtube.com/live/Epn2YlTdmG8?si=cXnjndxrEH_VMOJ-"
   },
   {
-    title: "Microservices in .NET",
-    description: "Understanding microservices architecture implementation in .NET.",
-    thumbnail: "https://images.pexels.com/photos/1181354/pexels-photo-1181354.jpeg",
-    url: "https://youtube.com/watch?v=example6"
-  }
+    title: "CQRS Pattern in .NET",
+    description: "Unravel the mysteries of CQRS and compare it with the traditional service layer model",
+    thumbnail: episode3,
+    url: "https://www.youtube.com/live/0FEGVRh6RCo?si=IAhDoaU9xvsmd9fq"
+  },
+  {
+    title: "Book Review: A Developer's Guide to .NET in Azure",
+    description: "This book is a curated compendium that'll enable you to master the creation of resilient, scalable, and highly available applications.",
+    thumbnail: episode4,
+    url: "https://www.youtube.com/live/iCuqbbBrccQ?si=sErlNkXzyRgWYhvk"
+  },  
+  {
+    title: "Microsoft Semantic Kernel in API Communication",
+    description: "Microsoft Semantic Kernel (SK) is a new technology that enables the integration of AI Large Language Models (LLMs)",
+    thumbnail: episode5,
+    url: "https://www.youtube.com/live/eE-lHPZzXX8?si=oFP6qK8zpg6uUtxB"
+  },
+  {
+    title: "Azure AI and ONNX Runtime",
+    description: "Create an AI model with Azure, turn it into ONNX, and use it in our .NET",
+    thumbnail: episode6,
+    url: "https://www.youtube.com/live/mUNHN0qhKQ4?si=StYl0sXh7vwImb19"
+  },
+  {
+    title: "Book Review: Learning Microsoft Azure: A Dash of .NET",
+    description: "Learning Microsoft Azure helps you and your organization plan to modernize services and move to the cloud ",
+    thumbnail: episode7,
+    url: "https://www.youtube.com/live/3xK_1huFgK0?si=ptT8VZCtVB8qzmvB"
+  },
+  {
+    title: "Loosely Coupling in Software Design",
+    description: "Importance of high cohesion and loosely coupling in programming",
+    thumbnail: episode8,
+    url: "https://www.youtube.com/live/OyGK1Im8QyA?si=sJlyxWRTf8n-4uud"
+  },
+  {
+    title: "How Much C# Development can Dynamics 365 Accommodate",
+    description: "Unravel the capabilities and possibilities that arise when marrying C# with Dynamics 365",
+    thumbnail: episode9,
+    url: "https://www.youtube.com/live/lHLVQxBlGfo?si=-pjl2GNzeEE1Fepo"
+  },
+  {
+    title: "Adding Machine Learning to .Net Applications",
+    description: "Fundamentals of creating an ML integrated application and ongoing model training",
+    thumbnail: episode10,
+    url: "https://www.youtube.com/live/PUyaZ9mQH2c?si=1_Lz4LpnKsggjP7h"
+  },
+  {
+    title: ".NET for IoT",
+    description: "Delve into the intersection of .NET technologies and Internet of Things (IoT) applications",
+    thumbnail: episode11,
+    url: "https://www.youtube.com/live/q0ywUpCQMtM?si=m5M5Ct56zDDpX7T7"
+  },
+  {
+    title: "Unleashing GenAI in .NET with Semantic Kernel ",
+    description: "Integrate Generative AI into your .NET projects and get a glimpse into the future of AI-driven development",
+    thumbnail: episode12,
+    url: "https://www.youtube.com/live/dnQMuKQitWY?si=Vc10k81zAoTFnDC8"
+  },
+  
 ];
 
 // Web3 and Blockchain Videos
@@ -106,23 +247,56 @@ const communityVideos = [
   <div class="sticky top-24 z-30 bg-dark-900/95 backdrop-blur-sm py-4 border-b border-dark-700">
     <div class="container mx-auto px-4 lg:px-8">
       <div class="flex gap-4 overflow-x-auto pb-2 scrollbar-hide">
-        <a href="#azure" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">Azure & Cloud</a>
-        <a href="#dotnet" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">.NET Development</a>
-        <a href="#web3" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">Web3 & Blockchain</a>
-        <a href="#community" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">Community & Leadership</a>
+        <a href="#adashofdotnet" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">A Dash of .Net Show</a>
+        <a href="#azureforsure" class="px-4 py-2 bg-dark-800 hover:bg-dark-700 text-white rounded-full whitespace-nowrap transition-colors">Azure for Sure</a>        
       </div>
     </div>
   </div>
+ 
 
-  <!-- Azure and Cloud Computing Section -->
-  <section id="azure" class="py-20">
+  <!-- .NET Development Section -->
+  <section id="adashofdotnet" class="py-20 bg-dark-900">
     <div class="container mx-auto px-4 lg:px-8">
       <SectionTitle 
-        title="Azure and Cloud Computing" 
+        title="A Dash of .Net Show" 
+        subtitle="A show that brings you quick and engaging insights into the vibrant world of C# and .NET development"
+      />
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
+        {aDashOfDotNetVideos.map((video, index) => (
+          <div 
+            class="bg-dark-800 rounded-xl overflow-hidden shadow-lg"
+            data-aos="fade-up"
+            data-aos-delay={index * 100}
+          >
+            <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
+              <div class="relative aspect-video">
+                <Image 
+                  src={video.thumbnail} 
+                  alt={video.title}
+                  class="w-full h-full object-cover"
+                />
+              </div>
+              <div class="p-6">
+                <h3 class="text-xl font-semibold text-white mb-3">{video.title}</h3>
+                <p class="text-gray-400 text-sm line-clamp-2">{video.description}</p>
+              </div>
+            </a>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+   <!-- Azure for Sure Section -->
+  <section id="azureforsure" class="py-20">
+    <div class="container mx-auto px-4 lg:px-8">
+      <SectionTitle 
+        title="Azure for Sure Show" 
         subtitle="Deep dives into cloud architecture and Azure services"
       />
       
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mt-12">
         {azureVideos.map((video, index) => (
           <div 
             class="bg-dark-800 rounded-xl overflow-hidden shadow-lg"
@@ -131,7 +305,7 @@ const communityVideos = [
           >
             <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
               <div class="relative aspect-video">
-                <img 
+                <Image 
                   src={video.thumbnail} 
                   alt={video.title}
                   class="w-full h-full object-cover"
@@ -146,109 +320,7 @@ const communityVideos = [
         ))}
       </div>
     </div>
-  </section>
-
-  <!-- .NET Development Section -->
-  <section id="dotnet" class="py-20 bg-dark-900">
-    <div class="container mx-auto px-4 lg:px-8">
-      <SectionTitle 
-        title=".NET Development" 
-        subtitle="Tutorials and best practices for .NET developers"
-      />
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-        {dotnetVideos.map((video, index) => (
-          <div 
-            class="bg-dark-800 rounded-xl overflow-hidden shadow-lg"
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
-          >
-            <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
-              <div class="relative aspect-video">
-                <img 
-                  src={video.thumbnail} 
-                  alt={video.title}
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-white mb-3">{video.title}</h3>
-                <p class="text-gray-400 text-sm line-clamp-2">{video.description}</p>
-              </div>
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Web3 and Blockchain Section -->
-  <section id="web3" class="py-20">
-    <div class="container mx-auto px-4 lg:px-8">
-      <SectionTitle 
-        title="Web3 and Blockchain" 
-        subtitle="Exploring decentralized technologies and blockchain development"
-      />
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-        {web3Videos.map((video, index) => (
-          <div 
-            class="bg-dark-800 rounded-xl overflow-hidden shadow-lg"
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
-          >
-            <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
-              <div class="relative aspect-video">
-                <img 
-                  src={video.thumbnail} 
-                  alt={video.title}
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-white mb-3">{video.title}</h3>
-                <p class="text-gray-400 text-sm line-clamp-2">{video.description}</p>
-              </div>
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
-
-  <!-- Community and Leadership Section -->
-  <section id="community" class="py-20 bg-dark-900">
-    <div class="container mx-auto px-4 lg:px-8">
-      <SectionTitle 
-        title="Community and Leadership" 
-        subtitle="Insights on building communities and technology leadership"
-      />
-      
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mt-12">
-        {communityVideos.map((video, index) => (
-          <div 
-            class="bg-dark-800 rounded-xl overflow-hidden shadow-lg"
-            data-aos="fade-up"
-            data-aos-delay={index * 100}
-          >
-            <a href={video.url} target="_blank" rel="noopener noreferrer" class="block">
-              <div class="relative aspect-video">
-                <img 
-                  src={video.thumbnail} 
-                  alt={video.title}
-                  class="w-full h-full object-cover"
-                />
-              </div>
-              <div class="p-6">
-                <h3 class="text-xl font-semibold text-white mb-3">{video.title}</h3>
-                <p class="text-gray-400 text-sm line-clamp-2">{video.description}</p>
-              </div>
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
-  </section>
+  </section>  
 
   <!-- CTA Section -->
   <section class="py-20 bg-primary-600">
