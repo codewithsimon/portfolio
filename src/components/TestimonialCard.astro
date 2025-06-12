@@ -1,4 +1,8 @@
 ---
+
+import { Image } from 'astro:assets';
+
+
 interface Props {
   content: string;
   author: string;
@@ -20,11 +24,15 @@ const {
 } = Astro.props;
 ---
 
+
+
 <div class="bg-white dark:bg-dark-700 rounded-xl p-8 shadow-lg" data-aos="fade-up">
   <div class="flex items-center mb-6">
-    <img 
+    <Image 
       src={imageUrl} 
       alt={author}
+      width={64}
+      height={64}
       class="w-16 h-16 rounded-full object-cover mr-4"
     />
     <div>
