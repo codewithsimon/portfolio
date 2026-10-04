@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import SectionTitle from '../components/SectionTitle.astro';
 import { Image } from 'astro:assets';
 import aiquizcraft from '../assets/projects/ai-quiz-craft.jpg';
+import aiagentworkshop from '../assets/projects/ai-agent-workshop.png';
 
 const projects = [
   {
@@ -11,6 +12,15 @@ const projects = [
     image: aiquizcraft,
     technologies: ["Gemini","React", "Github Pages"],
     github: "https://github.com/codewithsimon/ai-quiz-craft",
+    dimensions: "800x500px"
+  },
+  {
+    name: "Workshop - Build, Evaluate & Secure an AI Agent",
+    description: "A hands-on, vendor-neutral workshop. Build an AI agent from scratch, measure it with evals, then break it and make it safe. Runs on your laptop with open models, or on any provider you like.",
+    image: aiagentworkshop,
+    technologies: ["AI Agents", "Evals", "AI Security"],
+    link: "https://codewithsimon.github.io/ai-agent-workshop/",
+    linkLabel: "Visit Workshop",
     dimensions: "800x500px"
   }
   
@@ -85,12 +95,12 @@ const projects = [
               </div>
               
               <a 
-                href={project.github}
+                href={project.link ?? project.github}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors"
               >
-                View on GitHub
+                {project.linkLabel ?? "View on GitHub"}
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
                 </svg>
